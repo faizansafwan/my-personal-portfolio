@@ -1,0 +1,22 @@
+.img-skill {
+    width: 30%;
+    background-color: #F3ECEC;
+    margin: 5px;
+    transition: background-color 1s ease;
+    overflow: hidden;
+}
+
+.img-skill:hover {
+    background-color: #87B2F4;
+}
+
+.img-skill img {
+    padding: 10px;
+    width: 80%;
+    margin-left: 40px;
+    transition: transform 1s ease;
+}
+
+.img-skill img:hover {
+    transform: scale(1.04);
+}

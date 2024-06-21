@@ -26,7 +26,8 @@ export default function Project() {
                 <h3 className="sub-heading">Projects</h3>
             </div>
 
-             <div className="project-container d-flex flex-wrap align-content-between" >     
+            
+            <div className="project-container d-flex flex-wrap align-content-between" >     
                     {projectList.map((content, index) => (
                     <ProjectModel key={index} projectName={content.pName} src={content.src} alt={content.alt} desc={content.pDesc} />
                     ))}      

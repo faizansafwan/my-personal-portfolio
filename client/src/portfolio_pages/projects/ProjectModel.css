@@ -12,11 +12,9 @@
     height: 370px;
     border-radius: 5px;
     transition: transform 1s ease;
+    display: block;
 }
 
-.img-container img:hover {
-    transition:;
-}
 
 .projectName-container {
     position: absolute;
@@ -24,20 +22,24 @@
     left: 0;
     display: block;
     width: 100%;
-    visibility: hidden;
+    /* visibility: hidden; */
     background: linear-gradient(rgba(0,0,0,0.5), #4f94fc);
     display: flex;   
     align-items: center; 
     justify-content: center;
     flex-direction: column;
-    height: 0%;
-    transition: 0.6s;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out, transform 1.0s ease;
     border-radius: 5px;
 }
 
-.project-parent:hover .projectName-container  {
-    height: 100%;
-    visibility: visible;
+.project-parent:hover .projectName-container{
+    opacity: 1;
+    /* visibility: visible; */
+    transform: scaleY(1.05);
 }
 
-
+.project-parent:hover img {
+    transform: scaleY(1.05);
+}

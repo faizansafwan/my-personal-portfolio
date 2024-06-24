@@ -43,3 +43,8 @@
 .project-parent:hover img {
     transform: scaleY(1.05);
 }
+
+.projectName-container a {
+    background-color: white;
+    border-radius: 5px;
+}

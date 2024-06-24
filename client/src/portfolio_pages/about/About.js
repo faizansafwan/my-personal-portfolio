@@ -12,18 +12,15 @@ export default function About() {
                 <h3 className='sub-heading'>About me</h3>
             </div>
 
-            <div className=' position-absolute top-75 end-0 img2'>
-                <img src={profile2} alt="" height={'470px'} width={'450px'}/>
-            </div>
 
-            
-            <div className='w-50 about-profile'>
+            <div className='about-profile'>
                 <p>Highly motivated & Detail-oriented software engineering enthusiast,
                 offers analytical skills, strong problem-solving abilities, and 
                 collaborative team spirit. My dedication and adaptability make me 
                 an asset to any company.  
                 </p>
-            </div> 
+            </div>
+            
 
             <div className='about-detail'>
 
@@ -41,13 +38,16 @@ export default function About() {
                     <FontAwesomeIcon icon={faCakeCandles} color='black' /> &nbsp; 29/02/2000
                 </div>
               </div> 
-
+              
             </div>
 
-            <div className='d-flex float-start m-5'>
+            <div className='download-btn'>
                 <button className='primary-btn p-3 rounded-4 border-0' >Download Resume</button>
             </div>
-             
+            
+            <div className='img2 '>
+                <img src={profile2} alt="" height={'300px'} width={'300px'}/>
+            </div>
         </div>
     );
 }

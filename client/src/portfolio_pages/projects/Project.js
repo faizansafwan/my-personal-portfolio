@@ -29,7 +29,7 @@ export default function Project() {
             
             <div className="project-container d-flex flex-wrap align-content-between" >     
                     {projectList.map((content, index) => (
-                    <ProjectModel key={index} projectName={content.pName} src={content.src} alt={content.alt} desc={content.pDesc} />
+                    <ProjectModel key={index} projectName={content.pName} src={content.src} alt={content.alt} link={content.pDesc} />
                     ))}      
             </div>   
             

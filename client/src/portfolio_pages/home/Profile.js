@@ -9,6 +9,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'
 import Project from '../projects/Project';
 import Blog from '../blog/Blog';
+import Contact from '../contact/Contact';
 
 
 
@@ -68,16 +69,20 @@ export default function Profile() {
                 <About/>   
                </div>
                
-               <div className='skill-layout'>
+               <div className='skill-layout' data-aos="fade-up">
                 <Skill/>
                </div>
 
-               <div className='project-layout'>
+               <div className='project-layout' data-aos="zoom-out">
                 <Project/>
                </div>
                
                <div className='blog-layout'>
                 <Blog/>
+               </div>
+
+               <div className='contact-layout'>
+                <Contact/>
                </div>
             </div>     
         

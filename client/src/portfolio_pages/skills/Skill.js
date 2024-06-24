@@ -30,7 +30,7 @@ export default function Skill() {
                 <h3 className='sub-heading'>Skills</h3>
             </div>
 
-            <div className="image-gallery d-flex flex-wrap justify-content-center">
+            <div className="image-gallery d-flex flex-wrap">
                 {imageList.map((image, index) => (
                     <SkillImage key={index} src={image.src} alt={image.alt} />
                 ))}

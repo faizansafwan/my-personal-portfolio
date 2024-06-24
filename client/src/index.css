@@ -264,7 +264,6 @@ div a.logo-name {
 
 .contact-col1 {
   flex-basis: 60%;
-  border: 1px solid black;
   height: auto;
 }
 
@@ -272,32 +271,24 @@ div a.logo-name {
   margin: 10px;
 }
 
-.input input {
-  /* width: 93%; */
-  margin: 10px 20px;
+.contact-col1 form div input, .contact-col1 form div textarea {
+  background-color: #E0EDFF;
+  margin-bottom: 10px;
 }
-
-.input textarea {
-  /* margin: 10px 20px !important; */
-  width: 100%;
-  height: 50px;
-}
-
-/* .contact-col1 form div input {
-  background-color: ;
-} */
-
-/* .input-name input {
-  width: 45%;
-  margin: 10px 10px;
-} */
 
 .contact-col2 {
-  /* text-align: left;
-  */
-  margin: 0 20px;
+  margin: 20px 20px;
+  margin-left: 100px;
 }
 
 .submit-btn {
-  margin: 20px 85%;
+  margin: 20px 83%;
+}
+
+.logo-asp {
+  margin-top: 50px;
+}
+
+.logo-asp div {
+  margin-right: 40px;
 }

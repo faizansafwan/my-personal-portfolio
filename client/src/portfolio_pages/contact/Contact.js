@@ -1,4 +1,7 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMobileAlt, faMapMarkedAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faFacebook, faLinkedin, faInstagram, faGithub} from "@fortawesome/free-brands-svg-icons"
 
 export default function Contact() {
 
@@ -10,6 +13,7 @@ export default function Contact() {
             </div>
 
             <div className="contact-container d-flex">
+
                 <div className="contact-col1 d-flex flex-row mb-3">
 
                     <form className="row g-3">
@@ -27,30 +31,46 @@ export default function Contact() {
                         </div>
                         
                         <div className="submit-btn">
-                            <button type="submit" className="primary-btn p-2 rounded-3 border-0">Submit</button>
+                            <button type="submit" className="primary-btn p-3 rounded-4 border-0">Submit</button>
                         </div>
                     </form>
+
                 </div>
 
                 <div className="contact-col2">
                     <div>
-                        <p>+94 76 8084843</p>
+                        <p><FontAwesomeIcon icon={faMobileAlt} size="2x" color="#87B2F4" /> &nbsp;&nbsp; +94 76 8084843</p>
                     </div>
 
                     <div>
-                        <p>Hemmathagama, Kegalle</p>
+                        <p><FontAwesomeIcon icon={faMapMarkedAlt} size="2x" color="#87B2F4" /> &nbsp; Hemmathagama, Kegalle, Sri Lanka</p>
                     </div>
 
                     <div>
-                        <p>fai.saf010@gmail.com</p>
+                        <p><FontAwesomeIcon icon={faEnvelope} size="2x" color="#87B2F4" /> &nbsp; fai.saf010@gmail.com</p>
                     </div>
 
-                    <div>
-                        link
+                    <div className="d-flex logo-asp">
+                        <div>
+                            <span><a href="#"> <FontAwesomeIcon icon={faLinkedin} size="2x" color="#87B2F4" /> </a></span>
+                        </div>
+                        
+                        <div>
+                            <span><a href="#"> <FontAwesomeIcon icon={faFacebook} size="2x" color="#87B2F4" /> </a></span>
+                        </div>
+                         
+                        <div>
+                            <span><a href="#"> <FontAwesomeIcon icon={faGithub} size="2x" color="#87B2F4" /> </a></span>
+                        </div>
+                        
+                        <div>
+                            <span><a href="#"> <FontAwesomeIcon icon={faInstagram} size="2x" color="#87B2F4" /> </a></span>
+                        </div>
                     </div>
-                </div>
-                
+                </div> 
+
             </div>
+            
         </div>
     );
 }

@@ -66,6 +66,7 @@ export default function Profile() {
                     </div>
                 </div>
 
+
             </div>
 
             <div className='position-relative about-layout' data-aos="fade-right" id='about'>

@@ -15,7 +15,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  width: 100%;
+  max-width: 100%;
 }
 
 /* Nav bar */
@@ -231,6 +231,10 @@ div a.logo-name {
   background-color: #87B2F4;
 }
 
+.projectName-container h4 {
+  text-align: center;
+}
+
 /* Blog */
 
 .blog-layout {
@@ -318,14 +322,3 @@ div a.logo-name {
   padding: 5px;
 }
 
-
-@media (max-width: 650px) {
-  
-  .profile-container {
-    width: 100%;
-  }
-
-  .home-parent {
-    width: 150%;
-  }
-}

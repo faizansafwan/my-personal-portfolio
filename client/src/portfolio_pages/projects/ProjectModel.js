@@ -3,7 +3,7 @@ import './ProjectModel.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
-const ProjectModel = ({projectName,src, alt, link}) => {
+const ProjectModel = ({projectName,src, alt, pLink}) => {
 
     return(
         <div className="project-parent">
@@ -13,7 +13,7 @@ const ProjectModel = ({projectName,src, alt, link}) => {
                 </div>
                 <div className="projectName-container">
                     <h4><b>{projectName}</b></h4> <br />
-                    <a href={link}><FontAwesomeIcon icon={faArrowUpRightFromSquare} size="2x"/></a>
+                    <a href={pLink}><FontAwesomeIcon icon={faArrowUpRightFromSquare} size="2x"/></a>
                 </div>  
 
         </div>

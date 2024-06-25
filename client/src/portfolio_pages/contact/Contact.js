@@ -13,7 +13,7 @@ export default function Contact() {
             </div>
 
             <div className="contact-container d-flex">
-
+             
                 <div className="contact-col1 d-flex flex-row mb-3">
 
                     <form className="row g-3">
@@ -50,21 +50,21 @@ export default function Contact() {
                         <p><FontAwesomeIcon icon={faEnvelope} size="2x" color="#87B2F4" /> &nbsp; fai.saf010@gmail.com</p>
                     </div>
 
-                    <div className="d-flex logo-asp">
+                    <div className="d-flex logo-contact">
                         <div>
-                            <span><a href="#"> <FontAwesomeIcon icon={faLinkedin} size="2x" color="#87B2F4" /> </a></span>
+                            <span><a href="https://www.linkedin.com/in/faizansafwan-20000" className="logo-link" > <FontAwesomeIcon icon={faLinkedin} size="2x" color="#87B2F4" /> </a></span>
                         </div>
                         
                         <div>
-                            <span><a href="#"> <FontAwesomeIcon icon={faFacebook} size="2x" color="#87B2F4" /> </a></span>
+                            <span><a href="https://facebook.com/mohammed.faizan.374549" className="logo-link" > <FontAwesomeIcon icon={faFacebook} size="2x" color="#87B2F4" /> </a></span>
                         </div>
                          
                         <div>
-                            <span><a href="#"> <FontAwesomeIcon icon={faGithub} size="2x" color="#87B2F4" /> </a></span>
+                            <span><a href="https://github.com/faizansafwan" className="logo-link" > <FontAwesomeIcon icon={faGithub} size="2x" color="#87B2F4" /> </a></span>
                         </div>
                         
                         <div>
-                            <span><a href="#"> <FontAwesomeIcon icon={faInstagram} size="2x" color="#87B2F4" /> </a></span>
+                            <span><a href="" className="logo-link" > <FontAwesomeIcon icon={faInstagram} size="2x" color="#87B2F4" /> </a></span>
                         </div>
                     </div>
                 </div> 

@@ -247,9 +247,16 @@ div a.logo-name {
 /* Contact Us */
 
 .contact-layout {
-  margin: 200px 0;
+  margin: 150px 0;
   text-align: left;
   min-width: 100%;
+}
+
+.contact-parent {
+  border-bottom: solid 1px black;
+  border-top: solid 1px black;
+  margin: 0 50px;
+  padding: 50px 0 ;
 }
 
 .contact-head {
@@ -281,14 +288,23 @@ div a.logo-name {
   margin-left: 100px;
 }
 
+.contact-col2 div {
+  margin: 30px 0;
+}
 .submit-btn {
   margin: 20px 83%;
 }
 
-.logo-asp {
-  margin-top: 50px;
+.logo-contact {
+  margin-top: 0px;
 }
 
-.logo-asp div {
+.logo-contact div {
   margin-right: 40px;
+  transition: transform 0.5s ease-in-out;
 }
+
+.logo-contact div:hover {
+  transform: translateY(-4px);
+}
+

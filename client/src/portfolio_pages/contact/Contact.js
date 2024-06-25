@@ -64,7 +64,7 @@ export default function Contact() {
                         </div>
                         
                         <div>
-                            <span><a href="" className="logo-link" > <FontAwesomeIcon icon={faInstagram} size="2x" color="#87B2F4" /> </a></span>
+                            <span><a href="https://www.instagram.com/faizan_safwan/" className="logo-link" > <FontAwesomeIcon icon={faInstagram} size="2x" color="#87B2F4" /> </a></span>
                         </div>
                     </div>
                 </div> 

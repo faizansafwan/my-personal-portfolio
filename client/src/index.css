@@ -15,6 +15,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Georgia, 'Times New Roman', Times, serif;
+  width: 100%;
 }
 
 /* Nav bar */
@@ -178,7 +179,6 @@ div a.logo-name {
   text-align: justify;
   font-size: 20px;
   width: 50%;
-
 }
 
 .about-detail {
@@ -291,8 +291,9 @@ div a.logo-name {
 .contact-col2 div {
   margin: 30px 0;
 }
+
 .submit-btn {
-  margin: 20px 83%;
+  margin: 20px 82%;
 }
 
 .logo-contact {
@@ -308,3 +309,23 @@ div a.logo-name {
   transform: translateY(-4px);
 }
 
+
+/* Footer */
+
+.footer-parent {
+  background-color: #d2dff4;
+  color: black;
+  padding: 5px;
+}
+
+
+@media (max-width: 650px) {
+  
+  .profile-container {
+    width: 100%;
+  }
+
+  .home-parent {
+    width: 150%;
+  }
+}

@@ -10,7 +10,7 @@ import 'aos/dist/aos.css'
 import Project from '../projects/Project';
 import Blog from '../blog/Blog';
 import Contact from '../contact/Contact';
-
+import Footer from '../footer/Footer';
 
 
 export default function Profile() {
@@ -39,8 +39,9 @@ export default function Profile() {
     return (
         <div className='profile-container container-fluid'>
             <Nav/>
+
             <div className='row row-cols-1'>
-                <div className='home-parent col' data-aos="fade-up">
+                <div className='home-parent col' data-aos="fade-up" id='home'>
                     <div className=' d-flex justify-content-around'>
                         <div className='greet'>
                             <h3>Hey! Viewers</h3>
@@ -65,27 +66,32 @@ export default function Profile() {
                     </div>
                 </div>
 
-               <div className='position-relative about-layout' data-aos="fade-right">
+            </div>
+
+            <div className='position-relative about-layout' data-aos="fade-right" id='about'>
                 <About/>   
-               </div>
+            </div>
                
-               <div className='skill-layout' data-aos="fade-up">
+            <div className='skill-layout' data-aos="fade-up" id='skill'>
                 <Skill/>
-               </div>
+            </div>
 
-               <div className='project-layout' data-aos="zoom-out">
+            <div className='project-layout' data-aos="zoom-out" id='project'>
                 <Project/>
-               </div>
+            </div>
                
-               <div className='blog-layout'>
+            <div className='blog-layout' id='blog'>
                 <Blog/>
-               </div>
+            </div>
 
-               <div className='contact-layout'>
+            <div className='contact-layout' id='contact'>
                 <Contact/>
-               </div>
-            </div>     
-        
+            </div>
+
+            <div className='footer-layout' id='footer'>
+                <Footer/>
+            </div>
+
         </div>    
     );
 }

@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: white;
-  width: 100vw;
+  width: 100%;
   overflow-x: hidden;
 }
 
@@ -15,7 +15,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  max-width: 100%;
+  width: 100%;
 }
 
 /* Nav bar */
@@ -95,9 +95,9 @@ div a.logo-name {
 /* Home - Introduction */
 
 .home-parent {
-  width: 100%;
+  max-width: 100%;
   height: auto;
-  background-color: #87B2F4;
+  background: #87B2F4;
   position: relative;
   top: 50px;
   border-radius: 0 0 50% 50%;
@@ -322,3 +322,17 @@ div a.logo-name {
   padding: 5px;
 }
 
+@media (max-width: 600px) {
+
+  body {
+    width: 100vh;
+  }
+  
+  .profile-container {
+    width: 100vh;
+  }
+  .contact-col1 {
+    flex-basis: 100% !important;
+    height: auto;
+  }
+}

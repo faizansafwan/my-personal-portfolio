@@ -40,7 +40,7 @@ export default function Profile() {
         <div className='profile-container container-fluid'>
             <Nav/>
 
-            <div className='row row-cols-1'>
+            {/* <div className='row row-cols-1'> */}
                 <div className='home-parent col' data-aos="fade-up" id='home'>
                     <div className=' d-flex justify-content-around'>
                         <div className='greet'>
@@ -67,7 +67,7 @@ export default function Profile() {
                 </div>
 
 
-            </div>
+            {/* </div> */}
 
             <div className='position-relative about-layout' data-aos="fade-right" id='about'>
                 <About/>   

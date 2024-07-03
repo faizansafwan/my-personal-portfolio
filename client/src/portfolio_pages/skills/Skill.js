@@ -12,6 +12,7 @@ import mysql from '../skills/mysql.png'
 
 export default function Skill() {
 
+
     const imageList = [
         { src: javascript,  alt:'Javascript'},
         { src: java,  alt:'Java'},
@@ -26,10 +27,11 @@ export default function Skill() {
 
     return(
         <div>
+            {/* Sub heading - Skills */}
             <div className="skill-head">
                 <h3 className='sub-heading'>Skills</h3>
             </div>
-
+            {/* Skill container that designs to include all skill */}
             <div className="image-gallery d-flex flex-wrap align-content-lg-center justify-content-center">
                 {imageList.map((image, index) => (
                     <SkillImage key={index} src={image.src} alt={image.alt} />

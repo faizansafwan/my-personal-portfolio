@@ -7,7 +7,7 @@ export default function Contact() {
 
     return(
         <div className="contact-parent">
-
+            
             <div className="contact-head">
                 <h3 className="sub-heading">Get In Touch</h3>
             </div>

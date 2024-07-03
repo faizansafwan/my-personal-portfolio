@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Project() {
 
 
-
+    // List of projects
     const projectList = [
         {pName: 'Travel Management Mobile Application', src: project1, alt: 'project1', link: 'https://github.com/faizansafwan/Travel-Management-Mobile-Application' },
         {pName: 'Student Registration Portal', src: project2, alt: 'project2', link: 'https://github.com/faizansafwan/student-registration' },
@@ -22,11 +22,15 @@ export default function Project() {
 
     return(
         <div>
+
+            {/* Sub Heading - Project */}
+
             <div className="project-head">
                 <h3 className="sub-heading">Projects</h3>
             </div>
 
-            
+            {/* Project container that designs to include all projects */}
+
             <div className="project-container d-flex flex-wrap align-content-between" >     
                     {projectList.map((content, index) => (
                     <ProjectModel key={index} projectName={content.pName} src={content.src} alt={content.alt} pLink={content.link} />

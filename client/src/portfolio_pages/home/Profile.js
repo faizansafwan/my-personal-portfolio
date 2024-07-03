@@ -40,55 +40,66 @@ export default function Profile() {
         <div className='profile-container container-fluid'>
             <Nav/>
 
-            {/* <div className='row row-cols-1'> */}
+                {/* Home Layout */}
                 <div className='home-parent col' data-aos="fade-up" id='home'>
                     <div className=' d-flex justify-content-around'>
+
                         <div className='greet'>
                             <h3>Hey! Viewers</h3>
                             <h4>I am <span ref={autoType} className='auto-type' /></h4>
                             <p>Passionate and eager to coding, <br /> volunteeering and teaching</p> 
                         </div>
+
+                        {/* Design Porfile image */}
                         <div className='profile-img1'>
                         <img src={profile1} alt="" height={'190px'} width={'170px'} />
                         </div>
+
                     </div>
 
+                    {/* Design a small quote */}
                     <div className='d-flex justify-content-center'>
                         <div className='quote m-4'>
                         <p>“ Keep Goal, Don’t stop work <br />smart until you achieve it “</p>
                         </div>
                     </div>
                     
+                    {/* Design contact button */}
                     <div className='d-flex justify-content-center'>
                         <div className='contact-btn'>
                             <button className='primary-btn p-3 rounded-4 border-0'> Contact Me </button>
                         </div>
                     </div>
+                    
                 </div>
 
 
-            {/* </div> */}
-
+            {/* About Layout */}
             <div className='position-relative about-layout' data-aos="fade-right" id='about'>
                 <About/>   
             </div>
                
+            {/* Skills Layout */}
             <div className='skill-layout' data-aos="fade-up" id='skill'>
                 <Skill/>
             </div>
 
+            {/* Project Layout */}
             <div className='project-layout' data-aos="zoom-out" id='project'>
                 <Project/>
             </div>
                
+            {/* Blog Layout */}
             <div className='blog-layout' id='blog'>
                 <Blog/>
             </div>
 
+            {/* Contact Layout */}
             <div className='contact-layout' id='contact'>
                 <Contact/>
             </div>
 
+            {/* Footer Layout */}
             <div className='footer-layout' id='footer'>
                 <Footer/>
             </div>

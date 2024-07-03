@@ -4,6 +4,7 @@ import './BlogModel.css';
 const BlogModel = ({src, alt, blogHead, desc, url}) => {
 
     return(
+            // Structure or model of each blog
             <div className="blog-parent border-1 rounded-2">
                 <div className="blogImg-container">
                     <img src={src} alt={alt} className="" />

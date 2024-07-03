@@ -6,16 +6,20 @@ import { faFacebook, faLinkedin, faInstagram, faGithub} from "@fortawesome/free-
 export default function Contact() {
 
     return(
+         
         <div className="contact-parent">
-            
+
+            {/* Contact heading */}
             <div className="contact-head">
                 <h3 className="sub-heading">Get In Touch</h3>
             </div>
 
             <div className="contact-container d-flex">
              
+                {/*  Container Column left */}
                 <div className="contact-col1 d-flex flex-row mb-3">
 
+                    {/* Form Container */}
                     <form className="row g-3">
                         <div className="col-md-6">
                             <input type="text" className="form-control form-control-lg" placeholder="Jhon Smith"/>
@@ -37,6 +41,7 @@ export default function Contact() {
 
                 </div>
 
+                {/* Container column right */}
                 <div className="contact-col2">
                     <div>
                         <p><FontAwesomeIcon icon={faMobileAlt} size="2x" color="#87B2F4" /> &nbsp;&nbsp; +94 76 8084843</p>

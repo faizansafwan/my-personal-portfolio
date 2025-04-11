@@ -13,9 +13,9 @@ export default function Project() {
 
     // List of projects
     const projectList = [
-        {pName: 'Travel Management Mobile Application', src: project1, alt: 'project1', link: 'https://github.com/faizansafwan/Travel-Management-Mobile-Application' },
-        {pName: 'Student Registration Portal', src: project2, alt: 'project2', link: 'https://github.com/faizansafwan/student-registration' },
-        {pName: 'Web Apllication A/L Completed Students', src: project3, alt: 'project3', link: 'https://github.com/AmnaAroos2000/Student_Portal' },
+        {pName: 'Trip At - Traval Content Sharing Platform', src: project1, alt: 'project1', link: 'https://github.com/faizansafwan/Travel-Management-Mobile-Application' },
+        {pName: 'Retail Management System', src: project2, alt: 'project2', link: 'https://github.com/faizansafwan/student-registration' },
+        {pName: 'Student Portal - Find Career Opportunities', src: project3, alt: 'project3', link: 'https://github.com/AmnaAroos2000/Student_Portal' },
         {pName: 'Car Rental Service', src: project4, alt: 'project4', link: 'https://github.com/faizansafwan/Car-Rental-Service' },
         {pName: 'Hospital Database Management System', src: project5, alt: 'project5', link: 'https://github.com/faizansafwan/Hospital-Database-Management-System' }
     ]

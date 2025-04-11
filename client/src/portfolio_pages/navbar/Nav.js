@@ -6,7 +6,11 @@ export default function Nav() {
 
     return (
         // Container for navigation bar
-        <div className='nav-container'> 
+        <div className='nav-container' style={{
+            backdropFilter: 'blur(8px)',
+            backgroundColor: 'rgba(87, 153, 253, 0.8)',
+            boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)'
+        }}> 
             <nav className="navbar navbar-expand-lg">
 
                 {/* Bootstrap class for a fluid container */}

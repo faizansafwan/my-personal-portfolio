@@ -11,7 +11,7 @@ const BlogModel = ({src, alt, blogHead, desc, url}) => {
                 </div>
 
                 <div className="blogHead-container">
-                    <h4>{blogHead}</h4>
+                    <h4 className=" fw-bolder">{blogHead}</h4>
                 </div>
 
                 <div className="desc-container">

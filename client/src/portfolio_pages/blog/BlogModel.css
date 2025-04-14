@@ -12,6 +12,7 @@
 .blogImg-container  img{
     width: 100%;
     height: 300px;
+    transition: transform 0.4s ease-in-out;
     border-top-left-radius:5px;
     border-top-right-radius: 5px;
 }
@@ -19,6 +20,7 @@
 .blogImg-container {
     margin: 0px 0 10px 0;
     transition: transform 1s ease;
+    overflow: hidden;
 }
 
 .blog-parent:hover {
@@ -36,3 +38,6 @@
     text-align: justify;
 }
 
+.blog-parent:hover .blogImg-container img {
+    transform: scale(1.05);
+  }

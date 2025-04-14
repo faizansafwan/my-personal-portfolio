@@ -336,3 +336,10 @@ div a.logo-name {
     height: auto;
   }
 }
+/* Experience */
+.experience-layout {
+  margin: 100px 0px;
+  text-align: left;
+  min-width: 100%;
+  color: black;
+}

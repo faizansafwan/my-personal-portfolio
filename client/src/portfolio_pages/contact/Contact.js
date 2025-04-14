@@ -22,7 +22,7 @@ export default function Contact() {
                     {/* Form Container */}
                     <form className="row g-3">
                         <div className="col-md-6">
-                            <input type="text" className="form-control form-control-lg" placeholder="Jhon Smith"/>
+                            <input type="text" className="form-control form-control-lg" placeholder="First Last"/>
                         </div>
                         <div className="col-md-6">
                             <input type="email" className="form-control form-control-lg" placeholder="abc@gmail.com"/>
@@ -30,7 +30,7 @@ export default function Contact() {
                         <div className="col-12">
                             <input type="text" className="form-control form-control-lg"  placeholder="Subject"/>
                         </div>
-                        <div class="col-12">
+                        <div className="col-12">
                             <textarea type="text" className="form-control form-control-lg" id="inputAddress2" placeholder="Write your message..."/>
                         </div>
                         
@@ -44,11 +44,11 @@ export default function Contact() {
                 {/* Container column right */}
                 <div className="contact-col2">
                     <div>
-                        <p><FontAwesomeIcon icon={faMobileAlt} size="2x" color="#87B2F4" /> &nbsp;&nbsp; +94 76 8084843</p>
+                        <p><FontAwesomeIcon icon={faMobileAlt} size="2x" color="#87B2F4" /> &nbsp;&nbsp; +94 75 933 979 6</p>
                     </div>
 
                     <div>
-                        <p><FontAwesomeIcon icon={faMapMarkedAlt} size="2x" color="#87B2F4" /> &nbsp; Hemmathagama, Kegalle, Sri Lanka</p>
+                        <p><FontAwesomeIcon icon={faMapMarkedAlt} size="2x" color="#87B2F4" /> &nbsp; Kegalle, Sri Lanka</p>
                     </div>
 
                     <div>

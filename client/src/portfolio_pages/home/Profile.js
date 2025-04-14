@@ -63,7 +63,7 @@ export default function Profile() {
                             <i className="bi bi-github text-white rounded-circle"></i>
                         </a>
                         <a
-                            href="https://www.linkedin.com/in/faizansafwan"
+                            href="https://www.linkedin.com/in/faizansafwan-20000/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="social-icon-link">

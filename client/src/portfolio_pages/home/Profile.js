@@ -3,7 +3,7 @@ import Nav from '../navbar/Nav';
 import Typed from 'typed.js';
 import profile1 from './profile1.jpg';
 import About from '../about/About';
-import profile2 from '../about/Profile2.jpg'
+import '../../index.css'
 import Skill from '../skills/Skill';
 import AOS from 'aos';
 import 'aos/dist/aos.css'
@@ -20,10 +20,10 @@ export default function Profile() {
 
     React.useEffect ( () => {
         const typed = new Typed(autoType.current, {
-            strings: ['<i> Faizan </i>', '<i> Programmer </i>'], 
+            strings: ['<i> Faizan </i>'], 
             typeSpeed: 130,
             backSpeed: 100,
-            loop: true,
+            loop: false,
         
         });
 
@@ -46,29 +46,39 @@ export default function Profile() {
                     <div className=' d-flex justify-content-around'>
 
                         <div className='greet'>
-                            <h3>Hey! Viewers</h3>
-                            <h4>I am <span ref={autoType} className='auto-type' /></h4>
-                            <p>Passionate and eager to coding, <br /> volunteeering and teaching</p> 
-                        </div>
-
-                        {/* Design Porfile image */}
-                        <div className='profile-img1'>
-                        <img src={profile1} alt="" height={'190px'} width={'170px'} />
+                            <h3 className='fw-bold text-center' style={{fontSize: '2.5rem'}}>Hi! I am <span ref={autoType} className='auto-type' /></h3>
+                            <p className='text-center' style={{fontSize: '1.5rem'}}>Software Engineering Enthusiast & Full Stack Developer</p> 
                         </div>
 
                     </div>
 
-                    {/* Design a small quote */}
-                    <div className='d-flex justify-content-center'>
-                        <div className='quote m-4'>
-                        <p>“ Keep Goal, Don’t stop work <br />smart until you achieve it “</p>
-                        </div>
+                   
+                        {/* Design linkedIn, GitHub logo with link */}
+                    <div className="d-flex justify-content-center gap-4 my-3">
+                        <a 
+                            href="https://github.com/faizansafwan"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="social-icon-link">
+                            <i className="bi bi-github text-white rounded-circle"></i>
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/in/faizansafwan"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="social-icon-link">
+                            <i className="bi bi-linkedin text-white rounded-circle"></i>
+                        </a>
                     </div>
-                    
-                    {/* Design contact button */}
+
                     <div className='d-flex justify-content-center'>
                         <div className='contact-btn'>
-                            <button className='primary-btn p-3 rounded-4 border-0'> Contact Me </button>
+                        <button className='primary-btn p-3 rounded-4 border-0 d-flex align-items-center gap-2'>
+  <a className="nav-link text-white text-decoration-none" href="#about">
+    View My work <i className="bi bi-arrow-down-circle-fill ms-2"></i>
+  </a>
+</button>
+
                         </div>
                     </div>
                     

@@ -37,7 +37,7 @@ export default function Skill() {
         <div className="m-4 text-black">
             {/* Sub heading - Skills */}
             <div className=" m-1 my-5">
-                <h3 className=' fs-1 fw-semibold '>My Skills</h3>
+                <h3 className='  fw-semibold border-start border-5 border-primary ps-3 py-2 '>My Skills</h3>
             </div>
 
             <div className=" w-100 m-2 d-grid gap-3 " style= {{ gridTemplateColumns: "repeat(3, 1fr)" }}>

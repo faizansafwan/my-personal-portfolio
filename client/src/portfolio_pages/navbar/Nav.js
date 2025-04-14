@@ -17,7 +17,7 @@ export default function Nav() {
                 <div className="container-fluid">
 
                     {/* Brand name */}
-                    <a className="navbar-brand logo-name" href="#"> Faizan' </a>
+                    <a className="navbar-brand logo-name" href="#"> FS<span className="text-primary">.</span> </a>
                     <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     
                     {/* class for a list of navigation items */}
@@ -42,6 +42,11 @@ export default function Nav() {
                         <li className="nav-item px-2">
                         <a className="nav-link" href="#blog">Blog</a>
                         </li>
+
+                        <li className="nav-item px-2">
+                        <a className="nav-link" href="#experience">Work Experience</a>
+                        </li>
+
                         <li className="nav-item px-2">
                         <a className="nav-link" href="#contact">Contact</a>
                         </li>

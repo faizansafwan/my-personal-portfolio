@@ -108,7 +108,7 @@ div a.logo-name {
 .greet {
   text-align: left;
   z-index: 1;
-  margin-top: 100px !important;
+  margin-top: 70px !important;
 }
 
 .auto-type {
@@ -169,8 +169,21 @@ div a.logo-name {
 }
 
 .about-head {
-  padding-top: 50px;
-  margin: 40px 0 0 40px !important;
+  margin-top: 100px;
+}
+
+/* Hover effects for About section */
+.hover-effect:hover {
+  transform: translateX(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hover-item {
+  transition: transform 0.3s ease;
+}
+
+.hover-item:hover {
+  transform: translateX(5px);
 }
 
 .about-profile {
@@ -342,4 +355,18 @@ div a.logo-name {
   text-align: left;
   min-width: 100%;
   color: black;
+}
+
+.social-icon-link {
+
+  font-size: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icon-link:hover {
+  transform: scale(1.07);
 }

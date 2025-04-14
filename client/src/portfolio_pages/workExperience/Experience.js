@@ -1,4 +1,8 @@
 import experienceIcon from "../../images/experience.png";
+import coding from "../../images/coding.png";
+import integration from "../../images/integration.png";
+import quality from "../../images/Quality.png";
+import collaboration from "../../images/collobration.png";
 import { useEffect, useState } from "react";
 
 export default function Experience() {
@@ -95,25 +99,34 @@ export default function Experience() {
 
                 {(showMore || isAnimating) && (
                     <div>
-                        {experience.map((item, index) => (
-                            <ul
-                                key={index}
-                                style={{
-                                    opacity: animatedIndexes.includes(index) ? 1 : 0,
-                                    transform: animatedIndexes.includes(index) ? 'translateY(0)' : 'translateY(20px)',
-                                    transition: 'opacity 0.5s ease, transform 0.5s ease',
-                                    marginBottom: '10px',
-                                    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
-                                    padding: '10px 15px',
-                                    borderRadius: '4px',
-                                    backgroundColor: 'rgba(255, 255, 255, 0.8)'
-                                }}
-                            >
-                                <li style={{ color: "#5e9af7" }}>
-                                    <p className="text-muted">{item}</p>
-                                </li>
-                            </ul>
-                        ))}
+                        {experience.map((item, index) => {
+    const icons = [coding, integration, quality, collaboration];
+
+    return (
+        <ul
+            key={index}
+            style={{
+                opacity: animatedIndexes.includes(index) ? 1 : 0,
+                transform: animatedIndexes.includes(index) ? 'translateY(0)' : 'translateY(20px)',
+                transition: 'opacity 0.5s ease, transform 0.5s ease',
+                marginBottom: '10px',
+                boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
+                padding: '10px 15px',
+                borderRadius: '4px',
+                backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px'
+            }}
+        >
+            <img src={icons[index]} alt="icon" height="24px" width="24px" />
+            <li style={{ color: "#5e9af7", listStyle: 'none' }}>
+                <p className="text-muted mb-0">{item}</p>
+            </li>
+        </ul>
+    );
+})}
+
                     </div>
                 )}
 

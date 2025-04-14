@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Nav from '../navbar/Nav';
 import Typed from 'typed.js';
 import profile1 from './profile1.jpg';
@@ -11,11 +11,12 @@ import Project from '../projects/Project';
 import Blog from '../blog/Blog';
 import Contact from '../contact/Contact';
 import Footer from '../footer/Footer';
+import Experience from '../workExperience/Experience';
 
 
 export default function Profile() {
 
-    const autoType = React.useRef(null);
+    const autoType = useRef(null);
 
     React.useEffect ( () => {
         const typed = new Typed(autoType.current, {
@@ -92,6 +93,11 @@ export default function Profile() {
             {/* Blog Layout */}
             <div className='blog-layout' id='blog'>
                 <Blog/>
+            </div>
+
+            {/* Experience Layout */}
+            <div className='experience-layout' id='experience'>
+                <Experience />
             </div>
 
             {/* Contact Layout */}

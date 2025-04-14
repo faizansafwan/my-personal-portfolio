@@ -46,8 +46,9 @@ export default function Project() {
     return(
         <div className="">
             {/* Sub Heading - Project */}
-            <div className="text-center mb-4">
-                <h3 className=" text-black fs-1 fw-semibold">Projects</h3>
+            <div className='d-flex flex-column justify-content-center align-items-center about-head'>
+                <h3 className='sub-heading'>Projects</h3>
+                <p className=' bg-primary mt-1' style={{ height: '5px', width: '90px', marginBottom: '20px'}}></p>
             </div>
 
             {/* Project container with 2x2 grid layout */}

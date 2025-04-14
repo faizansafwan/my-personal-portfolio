@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SkillImage from "./SkillImage";
-
+import './SkillImage.css';
 import frontend from '../../images/frontend.gif'
 import backend from '../../images/backend.gif'
 import database from '../../images/database.gif'
@@ -36,15 +36,15 @@ export default function Skill() {
     return(
         <div className="m-4 text-black">
             {/* Sub heading - Skills */}
-            <div className=" m-1">
-                <h3 className=' text-center fs-1 fw-semibold '>My Skills</h3>
+            <div className=" m-1 my-5">
+                <h3 className=' fs-1 fw-semibold '>My Skills</h3>
             </div>
 
             <div className=" w-100 m-2 d-grid gap-3 " style= {{ gridTemplateColumns: "repeat(3, 1fr)" }}>
                 {skillList.map((element, index) => (
                    <div 
                         key={index} 
-                        className="m-1 p-3 bg-light rounded-2 shadow-sm"
+                        className="m-1 p-3 bg-light rounded-2 shadow-lg"
                         onMouseEnter={() => setHoveredSkill(index)}
                         onMouseLeave={() => setHoveredSkill(null)}
                     >
@@ -54,7 +54,13 @@ export default function Skill() {
                                 className="w-25" 
                                 alt={element.alt} />
                         </div>
-                        <div className="my-4"><h4 className="fw-bold">{element.name}</h4></div>
+
+                        <div className="my-4">
+                            <h4 className={`fw-bold skill-title ${hoveredSkill === index ? 'slide-in' : ''}`} >
+                                {element.name}
+                            </h4>
+                        </div>
+
 
                         <div className="d-flex flex-wrap gap-2">
                             {

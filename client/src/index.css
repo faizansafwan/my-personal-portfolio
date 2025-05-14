@@ -1,0 +1,435 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #F5F5F5;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Web Container */
+.profile-container {
+  margin: 0;
+  padding: 0;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  width: 100%;
+}
+
+/* Nav bar */
+.nav-container {
+  background-color: #5799FD; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+}
+
+.nav-container nav div a {
+  color: aliceblue;
+}
+
+div a.logo-name {
+  font-size: 25px;
+  margin: 0 0 0 30px;
+  font-weight: 700;
+}
+
+#navbarSupportedContent {
+  font-size: 17px;
+ 
+}
+
+.navbar-nav .nav-link {
+  position: relative; 
+  transition: 0.5s;
+}
+
+.nav-link.active {
+  text-decoration: underline;
+}
+
+.navbar-nav .nav-link:hover {
+  text-decoration: none;
+}
+
+.navbar-nav .nav-link:hover::after {
+  content: ' ';
+  position: absolute;
+  left: 7px;
+  bottom: 5px;
+  width: 50%;
+  height: 2px;
+  background-color: #87B2F4;
+}
+
+/* Remove hover effect from Bootstrap navbar */
+.navbar-brand:hover, .nav-link:hover {
+    color: #d2dff4; /* Maintain text color */
+}
+
+/* General CSS */
+
+.primary-btn {
+  background-color: #5799FD;
+  color: white;
+  font-size: 22px;
+  transition: background-color 1s ease-in-out ;
+  z-index: 1;
+}
+
+.primary-btn:hover {
+  background-color: #d2dff4;
+}
+
+.sub-heading {
+  color: black;
+  font-size: 35px;
+  font-weight: 600;
+  margin: 0 30px;
+}
+
+/* Home - Introduction */
+
+.home-parent {
+  max-width: 100%;
+  height: auto;
+  background: #87B2F4;
+  /* position: relative; */
+  /* top: 50px; */
+  border-radius: 0 0 50% 50%;
+  padding: 10px 20px 50px 20px;
+}
+
+
+.greet {
+  text-align: left;
+  z-index: 1;
+  margin-top: 70px !important;
+}
+
+.auto-type {
+  color:#4f94fc;
+} 
+
+.profile-img1 {
+  z-index: 1;
+  margin-top: 80px;
+}
+
+.profile-img1 img {
+  border-radius: 50%;
+}
+
+.quote {
+  z-index: 1;
+}
+
+.quote p {
+  font-size: 35px;
+}
+
+.contact-btn {
+  z-index: 1;
+}
+
+.contact-btn:hover .primary-btn {
+  background-color: #d2dff4;
+}
+
+/* About Me */
+
+.about-parent  {
+  z-index: 1;
+  width: 90%;
+  height: auto;
+  background-color: #87B2F4;
+  border-radius: 0 50% 50% 0;
+  padding: 0 10% 5% 1%;
+  position: relative;
+}
+
+.about-layout {
+  margin-top: 600px;
+  text-align: left;
+}
+
+.img2 {
+  position: absolute;
+  top: 20%;
+  left: 80%;
+  margin: auto;
+}
+
+.img2  img{
+  border-radius: 50% 50% 50% 50%;
+}
+
+.about-head {
+  margin-top: 100px;
+}
+
+/* Hover effects for About section */
+.hover-effect:hover {
+  transform: translateX(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hover-item {
+  transition: transform 0.3s ease;
+}
+
+.hover-item:hover {
+  transform: translateX(5px);
+}
+
+.about-profile {
+  margin-top: 50px;
+  margin-left: 50px;
+  text-align: justify;
+  font-size: 20px;
+  width: 50%;
+}
+
+.about-detail {
+  margin: 30px 40px;
+  font-size: 22px;
+  color: black;
+}
+
+.about-detail div div {
+  width: 45%;
+  text-align: left;
+}
+
+.download-btn {
+  margin: 0 40px;
+}
+
+/* Skills */
+
+.skill-layout {
+  margin: 150px 0;
+  text-align: left;
+}
+
+.skill-head {
+  margin: 0 40px; 
+}
+
+.image-gallery {
+  margin: 50px 30px;
+ 
+}
+
+
+/* Projects */
+
+.project-layout {
+  margin: 50px 0px;
+  text-align: left;
+  width: 100%; 
+}
+
+.project-head {
+  margin: 30px 40px; 
+}
+
+.project-container {
+  width: 100%;
+  padding: 60px 50px;
+  background-color: #87B2F4;
+}
+
+.projectName-container h4 {
+  text-align: center;
+}
+
+/* Blog */
+
+.blog-layout {
+  margin: 100px 0px;
+  text-align: left;
+  min-width: 100%;
+}
+
+.blog-gallery {
+  margin: 50px 30px;
+}
+
+
+/* Contact Us */
+
+.contact-layout {
+  margin: 150px 0;
+  text-align: left;
+  min-width: 100%;
+}
+
+.contact-parent {
+  border-bottom: solid 1px black;
+  border-top: solid 1px black;
+  margin: 0 50px;
+  padding: 50px 0 ;
+}
+
+.contact-head {
+  margin: 30px 40px;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  color: black;
+}
+
+
+.contact-col1 {
+  flex-basis: 60%;
+  height: auto;
+}
+
+.contact-col1 form {
+  margin: 10px;
+}
+
+.contact-col1 form div input, .contact-col1 form div textarea {
+  background-color: #E0EDFF;
+  margin-bottom: 10px;
+}
+
+.contact-col2 {
+  margin: 20px 20px;
+  margin-left: 100px;
+}
+
+.contact-col2 div {
+  margin: 30px 0;
+}
+
+.submit-btn {
+  margin: 20px 82%;
+}
+
+.logo-contact {
+  margin-top: 0px;
+}
+
+.logo-contact div {
+  margin-right: 40px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.logo-contact div:hover {
+  transform: translateY(-4px);
+}
+
+@media (max-width: 600px) {
+
+  body,
+  .profile-container {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .contact-container {
+    flex-direction: column;
+    margin: 0 10px;
+  }
+
+  .contact-col1,
+  .contact-col2 {
+    flex-basis: 100%;
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  .submit-btn {
+    margin: 10px auto;
+    text-align: center;
+  }
+
+  .contact-col2 {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .logo-contact {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .logo-contact div {
+    margin: 10px;
+  }
+
+  .sub-heading {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .contact-parent {
+    margin: 0 20px;
+    padding: 30px 0;
+  }
+
+  .contact-head {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .contact-col1 form div input,
+  .contact-col1 form div textarea {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+
+
+/* Footer */
+
+.footer-parent {
+  background-color: #d2dff4;
+  color: black;
+  padding: 5px;
+}
+
+@media (max-width: 600px) {
+
+  body {
+    width: 100vh;
+  }
+  
+  .profile-container {
+    width: 100vh;
+  }
+  .contact-col1 {
+    flex-basis: 100% !important;
+    height: auto;
+  }
+}
+/* Experience */
+.experience-layout {
+  margin: 100px 0px;
+  text-align: left;
+  min-width: 100%;
+  color: black;
+}
+
+.social-icon-link {
+
+  font-size: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icon-link:hover {
+  transform: scale(1.07);
+}

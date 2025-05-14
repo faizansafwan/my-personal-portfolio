@@ -1,0 +1,100 @@
+
+.project-parent {
+    position: relative;
+    width: 30%;
+    margin: 15px 15px;
+    border-radius: 5px;
+    justify-content: space-around;
+}
+
+.img-container img {
+    width: 100%;
+    height: 370px;
+    border-radius: 5px;
+    transition: transform 1s ease;
+    display: block;
+}
+
+
+.projectName-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    /* visibility: hidden; */
+    background: linear-gradient(rgba(0,0,0,0.5), #4f94fc);
+    display: flex;   
+    align-items: center; 
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out, transform 1.0s ease;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.project-parent:hover .projectName-container{
+    opacity: 1;
+    /* visibility: visible; */
+    transform: scaleY(1.05);
+}
+
+.project-parent:hover img {
+    transform: scaleY(1.05);
+}
+
+.projectName-container a {
+    background-color: white;
+    border-radius: 5px;
+}
+
+.project-card {
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .project-overlay {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    transition: height 0.6s ease, padding 0.6s ease;
+    overflow: hidden;
+    height: 25%; /* default */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0 0 12px 12px;
+  }
+  
+  .project-desc {
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    font-size: 0.95rem;
+    display: none;
+  }
+  
+  /* Hover effect */
+  .project-card:hover .project-overlay {
+    height: 100% !important;
+    justify-content: center;
+    padding: 2rem 1rem;
+    backdrop-filter: blur(0px);
+  }
+  
+  .project-card:hover .project-desc {
+    transform: translateY(0);
+    opacity: 1;
+    display: block;
+  }
+
+  .project-link {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .project-link:hover {
+    color: #ddd; /* Slight change on hover if you want */
+  }
+  
+  

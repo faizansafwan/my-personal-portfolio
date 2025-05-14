@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/my-personal-portfolio/static/css/main.c5e654c8.css",
+    "main.js": "/my-personal-portfolio/static/js/main.66bbdbf4.js",
+    "static/js/453.419a5d54.chunk.js": "/my-personal-portfolio/static/js/453.419a5d54.chunk.js",
+    "static/media/Trip-at.png": "/my-personal-portfolio/static/media/Trip-at.37c90f977404ae9c317b.png",
+    "static/media/ANNs.png": "/my-personal-portfolio/static/media/ANNs.25ca2d3b627caa27ab48.png",
+    "static/media/database.gif": "/my-personal-portfolio/static/media/database.90acca14cc1e080baa7b.gif",
+    "static/media/student-portal.png": "/my-personal-portfolio/static/media/student-portal.1594ab35b7cc2e8ce7c9.png",
+    "static/media/mobile.gif": "/my-personal-portfolio/static/media/mobile.da0b63a6ebbe763aded2.gif",
+    "static/media/retail-system.png": "/my-personal-portfolio/static/media/retail-system.34151adba96f82ebee51.png",
+    "static/media/backend.gif": "/my-personal-portfolio/static/media/backend.4d03d97fdbd055acd428.gif",
+    "static/media/trip-at-mobile.png": "/my-personal-portfolio/static/media/trip-at-mobile.af8289fe43d4e6a5c9d1.png",
+    "static/media/frontend.gif": "/my-personal-portfolio/static/media/frontend.643869a8a257ff4abacd.gif",
+    "static/media/tools.gif": "/my-personal-portfolio/static/media/tools.42b38a77e20cd66ab0f4.gif",
+    "static/media/holi-stay.png": "/my-personal-portfolio/static/media/holi-stay.4e864f22866f20a1d87d.png",
+    "static/media/uiux.gif": "/my-personal-portfolio/static/media/uiux.c055700238f66f5d34e7.gif",
+    "static/media/blog2.png": "/my-personal-portfolio/static/media/blog2.5d8f20a8678f8ce95dc9.png",
+    "static/media/profile.png": "/my-personal-portfolio/static/media/profile.7eecb6515ab2eefbc93f.png",
+    "static/media/blog3.png": "/my-personal-portfolio/static/media/blog3.d50e2c60430e71fa997a.png",
+    "static/media/integration.png": "/my-personal-portfolio/static/media/integration.480f4217544b80637ac9.png",
+    "static/media/Quality.png": "/my-personal-portfolio/static/media/Quality.8e8e5db29482844ff1a2.png",
+    "static/media/problem-solving.png": "/my-personal-portfolio/static/media/problem-solving.9eb319894727e634d643.png",
+    "static/media/collobration.png": "/my-personal-portfolio/static/media/collobration.236c706ed4f6421831ad.png",
+    "static/media/fast-learning.png": "/my-personal-portfolio/static/media/fast-learning.971c3d0ce6f33b8e5650.png",
+    "static/media/techical.png": "/my-personal-portfolio/static/media/techical.8a5e6b7e5d2a0d3018b1.png",
+    "static/media/coding.png": "/my-personal-portfolio/static/media/coding.4cb4d2cec55db9be1709.png",
+    "static/media/blog1.png": "/my-personal-portfolio/static/media/blog1.22a0de38437d44b5ca04.png",
+    "index.html": "/my-personal-portfolio/index.html",
+    "main.c5e654c8.css.map": "/my-personal-portfolio/static/css/main.c5e654c8.css.map",
+    "main.66bbdbf4.js.map": "/my-personal-portfolio/static/js/main.66bbdbf4.js.map",
+    "453.419a5d54.chunk.js.map": "/my-personal-portfolio/static/js/453.419a5d54.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c5e654c8.css",
+    "static/js/main.66bbdbf4.js"
+  ]
+}

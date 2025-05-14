@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "aos": "^2.3.4",
-    "bootstrap-icons": "^1.11.3",
-    "react-router-dom": "^6.23.0",
-    "typed.js": "^2.1.0"
-  }
-}

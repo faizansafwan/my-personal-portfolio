@@ -98,8 +98,8 @@ div a.logo-name {
   max-width: 100%;
   height: auto;
   background: #87B2F4;
-  position: relative;
-  top: 50px;
+  /* position: relative; */
+  /* top: 50px; */
   border-radius: 0 0 50% 50%;
   padding: 10px 20px 50px 20px;
 }
@@ -251,7 +251,7 @@ div a.logo-name {
 /* Blog */
 
 .blog-layout {
-  margin: 100px 50px;
+  margin: 100px 0px;
   text-align: left;
   min-width: 100%;
 }
@@ -281,10 +281,11 @@ div a.logo-name {
 }
 
 .contact-container {
-  margin: 0 30px;
+  display: flex;
+  flex-wrap: wrap;
   color: black;
-
 }
+
 
 .contact-col1 {
   flex-basis: 60%;
@@ -325,6 +326,68 @@ div a.logo-name {
 .logo-contact div:hover {
   transform: translateY(-4px);
 }
+
+@media (max-width: 600px) {
+
+  body,
+  .profile-container {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .contact-container {
+    flex-direction: column;
+    margin: 0 10px;
+  }
+
+  .contact-col1,
+  .contact-col2 {
+    flex-basis: 100%;
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  .submit-btn {
+    margin: 10px auto;
+    text-align: center;
+  }
+
+  .contact-col2 {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .logo-contact {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .logo-contact div {
+    margin: 10px;
+  }
+
+  .sub-heading {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .contact-parent {
+    margin: 0 20px;
+    padding: 30px 0;
+  }
+
+  .contact-head {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .contact-col1 form div input,
+  .contact-col1 form div textarea {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
 
 
 /* Footer */

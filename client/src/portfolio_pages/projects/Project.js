@@ -5,6 +5,7 @@ import tripAt from '../../images/Trip-at.png'
 import tripAtMobile from '../../images/trip-at-mobile.png'
 import retailSystem from '../../images/retail-system.png'
 import studentPortal from '../../images/student-portal.png'
+import holiStay from '../../images/holi-stay.png'
 
 
 export default function Project() {
@@ -35,6 +36,14 @@ export default function Project() {
         },
 
         {pName: 'Retail Management System', src: retailSystem, alt: 'Retail Management System',
+            link: 'https://github.com/faizansafwan/backend-retail-management',
+            desc: `The Retail Management System is a full-stack ERP solution built using .NET (C#), MSSQL, React, 
+            and Tailwind CSS. It streamlines retail operations by handling billing, inventory tracking, invoice 
+            generation, and customer management with automatic invoice generation, making it ideal for small-sized 
+            retail businesses looking to modernize and scale their operations efficiently. ` 
+        },
+
+        {pName: 'HoliStay - Hotel Portfolio', src: holiStay, alt: 'HoliStay Hotel Portfolio',
             link: 'https://github.com/faizansafwan/backend-retail-management',
             desc: `The Retail Management System is a full-stack ERP solution built using .NET (C#), MSSQL, React, 
             and Tailwind CSS. It streamlines retail operations by handling billing, inventory tracking, invoice 

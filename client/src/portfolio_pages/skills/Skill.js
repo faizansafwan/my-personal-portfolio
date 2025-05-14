@@ -40,48 +40,43 @@ export default function Skill() {
                 <h3 className='  fw-semibold border-start border-5 border-primary ps-3 py-2 '>My Skills</h3>
             </div>
 
-            <div className=" w-100 m-2 d-grid gap-3 " style= {{ gridTemplateColumns: "repeat(3, 1fr)" }}>
-                {skillList.map((element, index) => (
-                   <div 
-                        key={index} 
-                        className="m-1 p-3 bg-light rounded-2 shadow-lg"
-                        onMouseEnter={() => setHoveredSkill(index)}
-                        onMouseLeave={() => setHoveredSkill(null)}
-                    >
-                        <div className="d-flex justify-content-center">
-                            <img 
-                                src={element.src} 
-                                className="w-25" 
-                                alt={element.alt} />
-                        </div>
-
-                        <div className="my-4">
-                            <h4 className={`fw-bold skill-title ${hoveredSkill === index ? 'slide-in' : ''}`} >
-                                {element.name}
-                            </h4>
-                        </div>
-
-
-                        <div className="d-flex flex-wrap gap-2">
-                            {
-                                element.elements.map((item, itemIndex) => (
-                                    <div key={itemIndex}>
-                                        <p className="rounded-5 p-2 px-3" style={{
-                                            backdropFilter: 'blur(8px)',
-                                            backgroundColor: 'rgba(197, 217, 246, 0.7)',
-                                            boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
-                                            transition: 'all 0.3s ease',
-                                            transform: hoveredSkill === index ? 'scale(1.04)' : 'scale(1)',
-                                        }}>{item}</p>
-                                    </div>
-                                ))
-                            }
-                        </div>
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+            {skillList.map((element, index) => (
+                <div 
+                key={index} 
+                className="col"
+                onMouseEnter={() => setHoveredSkill(index)}
+                onMouseLeave={() => setHoveredSkill(null)}
+                >
+                <div className="m-1 p-3 bg-light rounded-2 shadow-lg h-100">
+                    <div className="d-flex justify-content-center">
+                    <img 
+                        src={element.src} 
+                        className="img-fluid w-50" 
+                        alt={element.alt} 
+                    />
                     </div>
-                
-                ))}
-                
+
+                    <div className="my-4 text-center">
+                    <h4 className={`fw-bold skill-title ${hoveredSkill === index ? 'slide-in' : ''}`}>
+                        {element.name}
+                    </h4>
+                    </div>
+
+                    <div className="d-flex flex-wrap gap-2 justify-content-center">
+                    {element.elements.map((item, itemIndex) => (
+                        <div key={itemIndex}>
+                        <p className="rounded-5 p-2 px-3 skill-pill">
+                            {item}
+                        </p>
+                        </div>
+                    ))}
+                    </div>
+                </div>
+                </div>
+            ))}
             </div>
+
             
         </div>
     );

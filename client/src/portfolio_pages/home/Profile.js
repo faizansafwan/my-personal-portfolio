@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Nav from '../navbar/Nav';
 import Typed from 'typed.js';
-import profile1 from './profile1.jpg';
+// import profile1 from './profile1.jpg';
 import About from '../about/About';
 import '../../index.css'
 import Skill from '../skills/Skill';

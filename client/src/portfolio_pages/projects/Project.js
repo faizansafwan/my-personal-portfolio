@@ -44,7 +44,7 @@ export default function Project() {
         },
 
         {pName: 'HoliStay - Hotel Portfolio', src: holiStay, alt: 'HoliStay Hotel Portfolio',
-            link: 'https://github.com/faizansafwan/backend-retail-management',
+            link: 'https://holistay.vercel.app/',
             desc: `Built a fully responsive with animated UI luxury resort website showcasing services, cultures and 
             experiences.` 
         },

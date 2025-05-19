@@ -45,10 +45,8 @@ export default function Project() {
 
         {pName: 'HoliStay - Hotel Portfolio', src: holiStay, alt: 'HoliStay Hotel Portfolio',
             link: 'https://github.com/faizansafwan/backend-retail-management',
-            desc: `The Retail Management System is a full-stack ERP solution built using .NET (C#), MSSQL, React, 
-            and Tailwind CSS. It streamlines retail operations by handling billing, inventory tracking, invoice 
-            generation, and customer management with automatic invoice generation, making it ideal for small-sized 
-            retail businesses looking to modernize and scale their operations efficiently. ` 
+            desc: `Built a fully responsive with animated UI luxury resort website showcasing services, cultures and 
+            experiences.` 
         },
     ]
 

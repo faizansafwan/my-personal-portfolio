@@ -1,0 +1,321 @@
+/* ==============================
+   ABOUT SECTION
+   Warm sand #eee8d8 background
+   White cards — consistent palette
+   ============================== */
+
+   @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500&display=swap');
+
+   .about-section {
+       position: relative;
+       background: white;
+       padding: 100px 6vw 90px;
+       overflow: hidden;
+       font-family: 'Outfit', sans-serif;
+   }
+   
+   /* ==== Ambient blob ==== */
+   .about-blob {
+       position: absolute;
+       width: 480px;
+       height: 480px;
+       border-radius: 50%;
+       background: radial-gradient(circle, rgba(201, 129, 58, 0.09) 0%, transparent 70%);
+       top: -120px;
+       right: -100px;
+       pointer-events: none;
+       z-index: 0;
+   }
+   
+   .about-inner {
+       position: relative;
+       z-index: 1;
+   }
+   
+   /* ==== Header ==== */
+   .about-eyebrow {
+       font-family: 'DM Mono', monospace;
+       font-size: 10px;
+       letter-spacing: 0.3em;
+       color: #c9813a;
+       display: block;
+       margin-bottom: 10px;
+   }
+   
+   .about-title {
+       font-family: 'Syne', sans-serif;
+       font-size: clamp(2.6rem, 5vw, 4rem);
+       font-weight: 800;
+       color: #1a1814;
+       line-height: 1;
+       letter-spacing: -0.03em;
+       margin: 0 0 52px;
+   }
+   
+   /* ==== Two-column grid ==== */
+   .about-grid {
+       display: grid;
+       grid-template-columns: 280px 1fr;
+       gap: 40px;
+       align-items: start;
+   }
+   
+   /* ==== Left column ==== */
+   .about-left {
+       display: flex;
+       flex-direction: column;
+       gap: 20px;
+   }
+   
+   /* Avatar */
+   .about-avatar {
+       width: 110px;
+       height: 110px;
+       border-radius: 50%;
+       background: #1a1814;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       border: 3px solid rgba(201, 129, 58, 0.3);
+       overflow: hidden;
+       position: relative;
+   }
+   
+   .about-avatar-img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+       border-radius: 50%;
+       position: absolute;
+       inset: 0;
+   }
+   
+   .about-avatar-initials {
+       font-family: 'Syne', sans-serif;
+       font-size: 1.8rem;
+       font-weight: 800;
+       color: #f5f0e8;
+       z-index: 1;
+   }
+   
+   /* Contact card */
+   .about-contact-card {
+       background: #fff;
+       border: 1px solid rgba(26, 24, 20, 0.08);
+       border-radius: 12px;
+       padding: 20px 22px;
+       display: flex;
+       flex-direction: column;
+       gap: 14px;
+   }
+   
+   .about-contact-row {
+       display: flex;
+       align-items: center;
+       gap: 12px;
+   }
+   
+   .about-contact-icon {
+       width: 34px;
+       height: 34px;
+       border-radius: 7px;
+       background: rgba(201, 129, 58, 0.12);
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       color: #c9813a;
+       font-size: 13px;
+       flex-shrink: 0;
+   }
+   
+   .about-contact-text {
+       display: flex;
+       flex-direction: column;
+       gap: 2px;
+   }
+   
+   .about-contact-label {
+       font-family: 'DM Mono', monospace;
+       font-size: 8.5px;
+       letter-spacing: 0.2em;
+       color: rgba(26, 24, 20, 0.3);
+   }
+   
+   .about-contact-val {
+       font-size: 12.5px;
+       color: #1a1814;
+       line-height: 1.4;
+   }
+   
+   /* ==== Right column ==== */
+   .about-right {
+       display: flex;
+       flex-direction: column;
+       gap: 16px;
+   }
+   
+   /* Bio card */
+   .about-bio-card {
+       background: #fff;
+       border: 1px solid rgba(26, 24, 20, 0.08);
+       border-radius: 12px;
+       padding: 28px 30px;
+   }
+   
+   .about-name {
+       font-family: 'Syne', sans-serif;
+       font-size: 1.35rem;
+       font-weight: 800;
+       color: #1a1814;
+       letter-spacing: -0.02em;
+       margin-bottom: 4px;
+   }
+   
+   .about-role-tag {
+       font-family: 'DM Mono', monospace;
+       font-size: 9.5px;
+       letter-spacing: 0.15em;
+       color: #c9813a;
+       display: block;
+       margin-bottom: 16px;
+   }
+   
+   .about-bio {
+       font-size: 13.5px;
+       line-height: 1.75;
+       color: rgba(26, 24, 20, 0.6);
+   }
+   
+   .about-divider {
+       height: 1px;
+       background: rgba(26, 24, 20, 0.07);
+       margin: 20px 0;
+   }
+   
+   /* Traits grid */
+   .about-traits {
+       display: grid;
+       grid-template-columns: 1fr 1fr;
+       gap: 16px;
+   }
+   
+   .about-trait {
+       display: flex;
+       align-items: flex-start;
+       gap: 10px;
+   }
+   
+   .about-trait-dot {
+       width: 6px;
+       height: 6px;
+       border-radius: 50%;
+       background: #c9813a;
+       flex-shrink: 0;
+       margin-top: 5px;
+   }
+   
+   .about-trait-text {
+       display: flex;
+       flex-direction: column;
+       gap: 2px;
+   }
+   
+   .about-trait-name {
+       font-size: 12.5px;
+       font-weight: 600;
+       color: #1a1814;
+       font-family: 'Outfit', sans-serif;
+   }
+   
+   .about-trait-sub {
+       font-size: 11.5px;
+       color: rgba(26, 24, 20, 0.45);
+       line-height: 1.5;
+   }
+   
+   /* Stats bar */
+   .about-stats {
+       display: flex;
+       background: #fff;
+       border: 1px solid rgba(26, 24, 20, 0.08);
+       border-radius: 12px;
+       overflow: hidden;
+   }
+   
+   .about-stat {
+       flex: 1;
+       padding: 20px 24px;
+       display: flex;
+       flex-direction: column;
+       gap: 4px;
+   }
+   
+   .about-stat + .about-stat {
+       border-left: 1px solid rgba(26, 24, 20, 0.07);
+   }
+   
+   .about-stat-num {
+       font-family: 'Syne', sans-serif;
+       font-size: 1.8rem;
+       font-weight: 800;
+       color: #1a1814;
+       line-height: 1;
+   }
+   
+   .about-stat-label {
+       font-family: 'DM Mono', monospace;
+       font-size: 9px;
+       letter-spacing: 0.15em;
+       color: rgba(26, 24, 20, 0.35);
+   }
+   
+   /* ==== Mobile Responsive ==== */
+   @media (max-width: 860px) {
+       .about-grid {
+           grid-template-columns: 1fr;
+           gap: 28px;
+       }
+   
+       .about-left {
+           flex-direction: row;
+           flex-wrap: wrap;
+           align-items: flex-start;
+           gap: 20px;
+       }
+   
+       .about-avatar {
+           flex-shrink: 0;
+       }
+   
+       .about-contact-card {
+           flex: 1;
+           min-width: 220px;
+       }
+   }
+   
+   @media (max-width: 560px) {
+       .about-section {
+           padding: 72px 5vw 64px;
+       }
+   
+       .about-title {
+           font-size: 2.2rem;
+       }
+   
+       .about-left {
+           flex-direction: column;
+       }
+   
+       .about-traits {
+           grid-template-columns: 1fr;
+       }
+   
+       .about-stats {
+           flex-direction: column;
+       }
+   
+       .about-stat + .about-stat {
+           border-left: none;
+           border-top: 1px solid rgba(26, 24, 20, 0.07);
+       }
+   }

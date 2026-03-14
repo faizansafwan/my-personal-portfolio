@@ -1,128 +1,143 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import Nav from '../navbar/Nav';
 import Typed from 'typed.js';
-// import profile1 from './profile1.jpg';
 import About from '../about/About';
-import '../../index.css'
 import Skill from '../skills/Skill';
 import AOS from 'aos';
-import 'aos/dist/aos.css'
+import 'aos/dist/aos.css';
 import Project from '../projects/Project';
 import Blog from '../blog/Blog';
 import Contact from '../contact/Contact';
 import Footer from '../footer/Footer';
 import Experience from '../workExperience/Experience';
-
+import './Profile.css';
+import '../../index.css';
 
 export default function Profile() {
-
     const autoType = useRef(null);
 
-    React.useEffect ( () => {
+    useEffect(() => {
         const typed = new Typed(autoType.current, {
-            strings: ['<i> Faizan </i>'], 
-            typeSpeed: 130,
-            backSpeed: 100,
+            strings: ['Faizan'],
+            typeSpeed: 120,
+            backSpeed: 80,
             loop: false,
-        
         });
-
-
-        return () => {
-            typed.destroy();
-        }
+        return () => typed.destroy();
     }, []);
 
     useEffect(() => {
-        AOS.init({duration: 2000})
+        AOS.init({ duration: 2000 });
     }, []);
 
     return (
-        <div className='profile-container container-fluid'>
-            <Nav/>
+        <div className="profile-container container-fluid">
+            <Nav />
 
-                {/* Home Layout */}
-                <div className='home-parent col' data-aos="fade-up" id='home'>
-                    <div className=' d-flex justify-content-around'>
+            {/* ── Hero / Home ── */}
+            <section className="hero-section" id="home">
+                <div className="hero-blob hero-blob--top" />
+                <div className="hero-blob hero-blob--bottom" />
+                <div className="hero-deco">FS</div>
 
-                        <div className='greet'>
-                            <h3 className='fw-bold text-center' style={{fontSize: '2.5rem'}}>Hi! I am <span ref={autoType} className='auto-type' /></h3>
-                            <p className='text-center' style={{fontSize: '1.5rem'}}>Software Engineering Enthusiast & Full Stack Developer</p> 
-                        </div>
-
+                <div className="hero-inner">
+                    <div className="hero-eyebrow">
+                        FULL STACK DEVELOPER · SRI LANKA
                     </div>
 
-                   
-                        {/* Design linkedIn, GitHub logo with link */}
-                    <div className="d-flex justify-content-center gap-4 my-3">
-                        <a 
-                            href="https://github.com/faizansafwan"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="social-icon-link">
-                            <i className="bi bi-github text-white rounded-circle"></i>
+                    <h1 className="hero-name">
+                        Hi, I'm<br />
+                        <span className="hero-name-accent" ref={autoType} />
+                    </h1>
+
+                    <p className="hero-role">
+                        ASSOCIATE SOFTWARE ENGINEER · OPEN TO OPPORTUNITIES
+                    </p>
+
+                    <p className="hero-desc">
+                        Building <strong>scalable, production-grade</strong> web applications
+                        across SaaS, e-commerce, and enterprise — from pixel-perfect UIs
+                        to robust backend APIs.
+                    </p>
+
+                    <div className="hero-cta">
+                        <a href="#project" className="hero-btn-primary">
+                            VIEW MY WORK ↗
                         </a>
-                        <a
-                            href="https://www.linkedin.com/in/faizansafwan-20000/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="social-icon-link">
-                            <i className="bi bi-linkedin text-white rounded-circle"></i>
+                        <a href="#contact" className="hero-btn-secondary">
+                            GET IN TOUCH
                         </a>
                     </div>
 
-                    <div className='d-flex justify-content-center'>
-                        <div className='contact-btn'>
-                        <button className='primary-btn p-3 rounded-4 border-0 d-flex align-items-center gap-2'>
-  <a className="nav-link text-white text-decoration-none" href="#about">
-    View My work <i className="bi bi-arrow-down-circle-fill ms-2"></i>
-  </a>
-</button>
-
+                    <div className="hero-stats">
+                        <div className="hero-stat">
+                            <span className="hero-stat-num">2+</span>
+                            <span className="hero-stat-label">YEARS EXP</span>
+                        </div>
+                        <div className="hero-stat-div" />
+                        <div className="hero-stat">
+                            <span className="hero-stat-num">5+</span>
+                            <span className="hero-stat-label">PROJECTS</span>
+                        </div>
+                        <div className="hero-stat-div" />
+                        <div className="hero-stat">
+                            <span className="hero-stat-num">10+</span>
+                            <span className="hero-stat-label">TECHNOLOGIES</span>
                         </div>
                     </div>
-                    
+
+                    <div className="hero-socials">
+                        <a className="hero-soc" href="https://github.com/faizansafwan"
+                            target="_blank" rel="noopener noreferrer" aria-label="GitHub">gh</a>
+                        <a className="hero-soc" href="https://www.linkedin.com/in/faizansafwan-20000/"
+                            target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+                        <a className="hero-soc" href="https://www.instagram.com/faizan_safwan/"
+                            target="_blank" rel="noopener noreferrer" aria-label="Instagram">ig</a>
+                        <a className="hero-soc" href="https://facebook.com/mohammed.faizan.374549"
+                            target="_blank" rel="noopener noreferrer" aria-label="Facebook">fb</a>
+                    </div>
                 </div>
 
+                <div className="hero-scroll">
+                    <div className="hero-scroll-line" />
+                    <span>SCROLL</span>
+                </div>
+            </section>
 
-            {/* About Layout */}
-            <div className='position-relative about-layout' data-aos="fade-right" id='about'>
-                <About/>   
-            </div>
-               
-            {/* Skills Layout */}
-            <div className='skill-layout' data-aos="fade-up" id='skill'>
-                <Skill/>
-            </div>
-
-            {/* Project Layout */}
-            <div className='project-layout' data-aos="zoom-out" id='project'>
-                <Project/>
-            </div>
-               
-            {/* Blog Layout */}
-            <div className='blog-layout' id='blog'>
-                <Blog/>
+            {/* About */}
+            <div className="about-layout position-relative" data-aos="fade-right" id="about">
+                <About />
             </div>
 
-            {/* Experience Layout */}
-            <div className='experience-layout' id='experience'>
+            {/* Experience */}
+            <div className="experience-layout" id="experience">
                 <Experience />
             </div>
 
-            {/* Contact Layout */}
-            <div className='contact-layout' id='contact'>
-                <Contact/>
+            {/* Projects */}
+            <div className="project-layout" data-aos="zoom-out" id="project">
+                <Project />
             </div>
 
-            {/* Footer Layout */}
-            <div className='footer-layout' id='footer'>
-                <Footer/>
+            {/* Skills */}
+            <div className="skill-layout" data-aos="fade-up" id="skill">
+                <Skill />
             </div>
 
-        </div>    
+            {/* Blog */}
+            <div className="blog-layout" id="blog">
+                <Blog />
+            </div>
+
+            {/* Contact */}
+            <div className="contact-layout" id="contact">
+                <Contact />
+            </div>
+
+            {/* Footer */}
+            <div className="footer-layout" id="footer">
+                <Footer />
+            </div>
+        </div>
     );
 }
-
-
-

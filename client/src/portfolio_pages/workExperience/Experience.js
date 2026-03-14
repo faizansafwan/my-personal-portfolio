@@ -1,146 +1,127 @@
-import experienceIcon from "../../images/experience.png";
-import coding from "../../images/coding.png";
-import integration from "../../images/integration.png";
-import quality from "../../images/Quality.png";
-import collaboration from "../../images/collobration.png";
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
+import "./Experience.css";
+
+const experiences = [
+  {
+    role: "Associate Full Stack Developer",
+    company: "Metro Coding",
+    type: "Remote",
+    date: "2025 JULY – PRESENT",
+    current: true,
+    subprojects: [
+      {
+        name: "EvalzNow — SaaS Human Capital Assessment Platform",
+        stack: "Next.js · Node.js · MySQL · Tailwind · Recharts · JIRA",
+        bullets: [
+          "Built a scalable, competency-based SaaS analytics platform for behavioral and mental assessments, enabling institutions to analyze 90% of candidate talent proficiency.",
+          "Designed interactive real-time analytics dashboards using Recharts for assessment scores, growth trends, and competency performance.",
+          "Implemented multi-level RBAC supporting admin, client, and staff roles — enhancing data security and reducing unauthorized access.",
+        ],
+      },
+      {
+        name: "MK Design — Online E-Commerce Clothing Platform",
+        stack: "Next.js · Node.js · MongoDB · Material UI · GraphQL · Redux",
+        bullets: [
+          "Resolved critical UI defects and frontend–backend integration issues, improving platform stability by over 95%.",
+          "Enhanced responsive design and cross-device compatibility for a consistent shopping experience across all devices.",
+          "Improved user confidence by delivering smoother navigation, easier access, and a more reliable purchasing flow.",
+        ],
+      },
+    ],
+  },
+  {
+    role: "Intern Full Stack Engineer",
+    company: "SKYREK (PVT) Ltd",
+    type: "",
+    date: "JUN 2024 – JAN 2025",
+    current: false,
+    tags: ["HTML", "CSS", "JavaScript", "React", "Node.js", "Express", "MongoDB", "Redux", "Firebase", "Tailwind CSS"],
+    subprojects: [
+      {
+        name: "Online E-Commerce Platform",
+        stack: "React · Node · Express.js · MongoDB · Redux · Tailwind · Firebase",
+        bullets: [
+          "Designed and implemented clean, maintainable backend services for admin product, stock, and rating management with scalable API architecture.",
+          "Collaborated with business analysts to translate requirements into accurate technical implementations aligned with functional expectations.",
+          "Managed Git workflows — feature branches, daily commits, and resolving merge conflicts for smooth team collaboration.",
+        ],
+      },
+    ],
+  },
+];
 
 export default function Experience() {
-    const [showMore, setShowMore] = useState(false);
-    const [animatedIndexes, setAnimatedIndexes] = useState([]);
-    const [isAnimating, setIsAnimating] = useState(false);
+  const [expandedIndexes, setExpandedIndexes] = useState({});
 
-    const skills = ["HTML", "CSS", "JavaScript", "React", "Node.js", "Express", "MongoDB", "Redux", "Firebase", "Tailwind CSS"];
-    
-    const experience = [
-        "Built a responsive UI for admin product management, user product rating, and user settings management, improving user experience by 15%.",
-        "Created and maintained secure RESTful APIs, enabling smooth frontend-backend integration.",
-        "Conducted functionality and usability testing to enhance product quality.",
-        "Collaborated remotely with dev team using Git & GitHub for version control."
-    ];
+  const toggle = (i) => {
+    setExpandedIndexes((prev) => ({ ...prev, [i]: !prev[i] }));
+  };
 
-    useEffect(() => {
-        if (showMore) {
-            setAnimatedIndexes([]); // Reset
-            let delay = 0;
-            for (let i = 0; i < experience.length; i++) {
-                setTimeout(() => {
-                    setAnimatedIndexes(prev => [...prev, i]);
-                }, delay);
-                delay += 150;
-            }
-        } else if (isAnimating) {
-            // Animate in reverse before hiding
-            let delay = 0;
-            for (let i = experience.length - 1; i >= 0; i--) {
-                setTimeout(() => {
-                    setAnimatedIndexes(prev => prev.filter(index => index !== i));
-                }, delay);
-                delay += 150;
-            }
+  return (
+    <section className="exp-section">
+      <div className="exp-bg-word">XP</div>
 
-            // Wait until the animation is done before actually hiding
-            setTimeout(() => {
-                setIsAnimating(false);
-            }, experience.length * 150 + 100);
-        }
-    }, [showMore, isAnimating]);
+      <div className="exp-header">
+        <span className="exp-label">CAREER JOURNEY</span>
+        <h2 className="exp-title">Work Experience</h2>
+      </div>
 
-    const handleToggle = () => {
-        if (showMore) {
-            setIsAnimating(true);
-            setShowMore(false); // Trigger reverse animation
-        } else {
-            setShowMore(true); // Show with normal animation
-        }
-    };
+      <div className="timeline">
+        {experiences.map((exp, i) => (
+          <div className="tl-entry" key={i}>
+            <div className={`tl-dot ${exp.current ? "filled" : ""}`} />
 
-    return (
-        <div className="py-3" style={{ backgroundColor: "rgba(197, 217, 246, 0.2)" }}>
-            <div>
-                <h2 className="sub-heading border-start border-5 border-primary ps-3 py-2 d-inline-block">
-                    Work Experience
-                </h2>
-            </div>
-
-            <div className="m-5 text-center fs-3">
-                <p className="mx-5 text-muted">
-                    My professional journey in web development, where I've contributed to impactful 
-                    projects and continuously grown my technical skill set.
-                </p>
-            </div>
-
-            <div className="m-5 p-5 bg-white rounded-4" style={{ 
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)", 
-                border: "1px solid rgba(0, 0, 0, 0.05)" 
-            }}>
-                <div className="d-flex justify-content-between">
-                    <div className="d-flex gap-2">
-                        <div className="d-inline-block">
-                            <img src={experienceIcon} alt="experience" />
-                        </div>
-                        <div className="d-flex flex-column gap-0">
-                            <p className="fw-bold mb-0">Intern Full Stack Developer</p>
-                            <p className="text-muted mb-0">SKYREK (PVT) Ltd</p>
-                        </div>
-                    </div>
-                    <div>
-                        <p className="text-muted fw-bold">2024 - 2025</p>
-                    </div>
-                </div>
-
-                <div className="my-3 d-flex flex-wrap gap-2">
-                    {skills.map((skill, index) => (
-                        <div key={index} className="text-muted px-2 rounded-4" style={{ backgroundColor: "rgba(206, 222, 245, 0.7)" }}>
-                            <p className="mb-0">{skill}</p>
-                        </div>
-                    ))}
-                </div>
-
-                {(showMore || isAnimating) && (
-                    <div>
-                        {experience.map((item, index) => {
-    const icons = [coding, integration, quality, collaboration];
-
-    return (
-        <ul
-            key={index}
-            style={{
-                opacity: animatedIndexes.includes(index) ? 1 : 0,
-                transform: animatedIndexes.includes(index) ? 'translateY(0)' : 'translateY(20px)',
-                transition: 'opacity 0.5s ease, transform 0.5s ease',
-                marginBottom: '10px',
-                boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
-                padding: '10px 15px',
-                borderRadius: '4px',
-                backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px'
-            }}
-        >
-            <img src={icons[index]} alt="icon" height="24px" width="24px" />
-            <li style={{ color: "#5e9af7", listStyle: 'none' }}>
-                <p className="text-muted mb-0">{item}</p>
-            </li>
-        </ul>
-    );
-})}
-
-                    </div>
-                )}
-
+            <div className="exp-card">
+              <div className="exp-card-top">
                 <div>
-                    <button 
-                        onClick={handleToggle}
-                        className="fw-medium mt-3"
-                        style={{ border: "none", backgroundColor: "transparent", color: "#5e9af7" }}
-                        disabled={isAnimating}
-                    >
-                        {showMore ? "See Less" : "See More"}
-                    </button>
+                  <div className="exp-role">{exp.role}</div>
+                  <div className="exp-company">
+                    <strong>{exp.company}</strong>
+                    {exp.type && ` · ${exp.type}`}
+                  </div>
                 </div>
+                <span className="exp-date">{exp.date}</span>
+              </div>
+
+              {/* Collapsible toggle */}
+              {exp.collapsible && (
+                <button className="exp-toggle" onClick={() => toggle(i)}>
+                  {expandedIndexes[i] ? "HIDE PROJECTS" : "VIEW PROJECTS"}
+                  <span className={`exp-arrow ${expandedIndexes[i] ? "open" : ""}`}>▾</span>
+                </button>
+              )}
+
+              {/* Subprojects */}
+              <div
+                className={`exp-expandable ${
+                  !exp.collapsible || expandedIndexes[i] ? "open" : ""
+                }`}
+              >
+                {exp.subprojects.map((sp, j) => (
+                  <div className="subproject" key={j}>
+                    <div className="sp-name">{sp.name}</div>
+                    <div className="sp-stack">{sp.stack}</div>
+                    <ul className="sp-bullets">
+                      {sp.bullets.map((b, k) => (
+                        <li key={k}>{b}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+
+              {/* Tags */}
+              {exp.tags && (
+                <div className="exp-tags">
+                  {exp.tags.map((tag, t) => (
+                    <span className="exp-tag" key={t}>{tag}</span>
+                  ))}
+                </div>
+              )}
             </div>
-        </div>
-    );
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }

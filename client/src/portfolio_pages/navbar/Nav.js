@@ -1,81 +1,74 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import "./Nav.css";
 
 export default function Nav() {
+    const [scrolled, setScrolled] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 20);
+        window.addEventListener("scroll", onScroll);
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+
+    const links = [
+        { label: "Home",            href: "#home" },
+        { label: "About",           href: "#about" },
+        { label: "Experience",      href: "#experience" },
+        { label: "Projects",        href: "#project" },
+        { label: "Skills",          href: "#skill" },
+        { label: "Blog",            href: "#blog" },
+        { label: "Contact",         href: "#contact" },
+    ];
+
     return (
-        <div
-            className="nav-container"
-            style={{
-                backdropFilter: "blur(8px)",
-                backgroundColor: "rgba(87, 153, 253, 0.8)",
-                boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-                position: "sticky",
-                top: 0,
-                zIndex: 999
-            }}
-        >
-            <nav className="navbar navbar-expand-lg navbar-light">
-                <div className="container-fluid">
-                    {/* Brand name */}
-                    <a className="navbar-brand logo-name" href="#">
-                        FS<span className="text-primary">.</span>
-                    </a>
+        <header className={`nav-header ${scrolled ? "nav-header--scrolled" : ""}`}>
+            <div className="nav-inner">
+                {/* Logo */}
+                <a className="nav-logo" href="#home">
+                    FS<span className="nav-logo-dot">.</span>
+                </a>
 
-                    {/* Toggler button for small screens */}
-                    <button
-                        className="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarNav"
-                        aria-controls="navbarNav"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
+                {/* Desktop links */}
+                <nav className="nav-links">
+                    {links.map(({ label, href }) => (
+                        <a key={href} className="nav-link" href={href}>
+                            {label}
+                        </a>
+                    ))}
+                </nav>
+
+                {/* CTA */}
+                <a href="#contact" className="nav-cta">
+                    Hire Me ↗
+                </a>
+
+                {/* Hamburger */}
+                <button
+                    className={`nav-hamburger ${menuOpen ? "open" : ""}`}
+                    onClick={() => setMenuOpen(!menuOpen)}
+                    aria-label="Toggle menu"
+                >
+                    <span /><span /><span />
+                </button>
+            </div>
+
+            {/* Mobile drawer */}
+            <div className={`nav-drawer ${menuOpen ? "nav-drawer--open" : ""}`}>
+                {links.map(({ label, href }) => (
+                    <a
+                        key={href}
+                        className="nav-drawer-link"
+                        href={href}
+                        onClick={() => setMenuOpen(false)}
                     >
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-
-                    {/* Collapsible content */}
-                    <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
-                        <ul className="navbar-nav mx-2">
-                            <li className="nav-item px-2">
-                                <a className="nav-link" href="#home">
-                                    Home
-                                </a>
-                            </li>
-                            <li className="nav-item px-2">
-                                <a className="nav-link" href="#about">
-                                    About
-                                </a>
-                            </li>
-                            <li className="nav-item px-2">
-                                <a className="nav-link" href="#skill">
-                                    Skills
-                                </a>
-                            </li>
-                            <li className="nav-item px-2">
-                                <a className="nav-link" href="#project">
-                                    My Projects
-                                </a>
-                            </li>
-                            <li className="nav-item px-2">
-                                <a className="nav-link" href="#blog">
-                                    Blog
-                                </a>
-                            </li>
-                            <li className="nav-item px-2">
-                                <a className="nav-link" href="#experience">
-                                    Work Experience
-                                </a>
-                            </li>
-                            <li className="nav-item px-2">
-                                <a className="nav-link" href="#contact">
-                                    Contact
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
+                        {label}
+                    </a>
+                ))}
+                <a href="#contact" className="nav-drawer-cta" onClick={() => setMenuOpen(false)}>
+                    Hire Me ↗
+                </a>
+            </div>
+        </header>
     );
 }

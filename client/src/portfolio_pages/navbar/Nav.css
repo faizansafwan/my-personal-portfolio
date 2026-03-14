@@ -1,0 +1,193 @@
+/* ==============================
+   NAVBAR
+   Warm charcoal — consistent with
+   #1a1814 text across all sections
+   ============================== */
+
+   @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@300;400&display=swap');
+
+   .nav-header {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     z-index: 999;
+     background: rgba(26, 24, 20, 0.92);
+     backdrop-filter: blur(14px);
+     -webkit-backdrop-filter: blur(14px);
+     border-bottom: 1px solid rgba(245, 240, 232, 0.06);
+     transition: background 0.3s ease, box-shadow 0.3s ease;
+   }
+   
+   .nav-header--scrolled {
+     background: rgba(26, 24, 20, 0.97);
+     box-shadow: 0 4px 32px rgba(0, 0, 0, 0.25);
+   }
+   
+   /* ==== Inner ==== */
+   .nav-inner {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     max-width: 1280px;
+     margin: 0 auto;
+     padding: 0 5vw;
+     height: 64px;
+   }
+   
+   /* ==== Logo ==== */
+   .nav-logo {
+     font-family: 'Syne', sans-serif;
+     font-size: 1.4rem;
+     font-weight: 800;
+     color: #f5f0e8;
+     text-decoration: none;
+     letter-spacing: -0.02em;
+     flex-shrink: 0;
+   }
+   
+   .nav-logo-dot {
+     color: #c9813a;
+   }
+   
+   /* ==== Desktop Links ==== */
+   .nav-links {
+     display: flex;
+     align-items: center;
+     gap: 4px;
+   }
+   
+   .nav-link {
+     font-family: 'DM Mono', monospace;
+     font-size: 11px;
+     letter-spacing: 0.08em;
+     color: rgba(245, 240, 232, 0.55);
+     text-decoration: none;
+     padding: 6px 12px;
+     border-radius: 6px;
+     transition: color 0.25s ease, background 0.25s ease;
+     white-space: nowrap;
+   }
+   
+   .nav-link:hover {
+     color: #f5f0e8;
+     background: rgba(245, 240, 232, 0.06);
+   }
+   
+   /* ==== CTA Button ==== */
+   .nav-cta {
+     font-family: 'DM Mono', monospace;
+     font-size: 11px;
+     letter-spacing: 0.1em;
+     color: #1a1814;
+     background: #c9813a;
+     text-decoration: none;
+     padding: 8px 18px;
+     border-radius: 6px;
+     transition: background 0.25s ease, transform 0.2s ease;
+     flex-shrink: 0;
+   }
+   
+   .nav-cta:hover {
+     background: #b8712e;
+     transform: translateY(-1px);
+     color: #fff;
+   }
+   
+   /* ==== Hamburger ==== */
+   .nav-hamburger {
+     display: none;
+     flex-direction: column;
+     justify-content: center;
+     gap: 5px;
+     width: 36px;
+     height: 36px;
+     background: none;
+     border: none;
+     cursor: pointer;
+     padding: 4px;
+     flex-shrink: 0;
+   }
+   
+   .nav-hamburger span {
+     display: block;
+     height: 1.5px;
+     background: rgba(245, 240, 232, 0.7);
+     border-radius: 2px;
+     transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+     transform-origin: left center;
+   }
+   
+   .nav-hamburger span:nth-child(3) {
+     width: 60%;
+   }
+   
+   .nav-hamburger.open span:nth-child(1) { transform: rotate(42deg) translateY(-1px); }
+   .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+   .nav-hamburger.open span:nth-child(3) { width: 100%; transform: rotate(-42deg) translateY(1px); }
+   
+   /* ==== Mobile Drawer ==== */
+   .nav-drawer {
+     display: none;
+     flex-direction: column;
+     background: #1a1814;
+     border-top: 1px solid rgba(245, 240, 232, 0.07);
+     padding: 0;
+     max-height: 0;
+     overflow: hidden;
+     transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+   }
+   
+   .nav-drawer--open {
+     max-height: 600px;
+     padding: 12px 0 20px;
+   }
+   
+   .nav-drawer-link {
+     font-family: 'DM Mono', monospace;
+     font-size: 12px;
+     letter-spacing: 0.1em;
+     color: rgba(245, 240, 232, 0.6);
+     text-decoration: none;
+     padding: 12px 5vw;
+     border-bottom: 1px solid rgba(245, 240, 232, 0.04);
+     transition: color 0.2s ease, background 0.2s ease;
+   }
+   
+   .nav-drawer-link:hover {
+     color: #f5f0e8;
+     background: rgba(245, 240, 232, 0.04);
+   }
+   
+   .nav-drawer-cta {
+     font-family: 'DM Mono', monospace;
+     font-size: 12px;
+     letter-spacing: 0.1em;
+     color: #c9813a;
+     text-decoration: none;
+     padding: 16px 5vw 4px;
+     transition: opacity 0.2s ease;
+   }
+   
+   .nav-drawer-cta:hover {
+     opacity: 0.75;
+   }
+   
+   /* ==== Responsive ==== */
+   @media (max-width: 860px) {
+     .nav-links {
+       display: none;
+     }
+   
+     .nav-cta {
+       display: none;
+     }
+   
+     .nav-hamburger {
+       display: flex;
+     }
+   
+     .nav-drawer {
+       display: flex;
+     }
+   }

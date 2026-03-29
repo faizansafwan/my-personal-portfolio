@@ -17,7 +17,7 @@ export default function Project() {
       subtitle: 'Travel Booking Platform',
       src: tripAtMobile,
       alt: 'Shakkya Holidays Travel Booking Application',
-      link: 'https://shakkyaholidays.com/dashboard/home',
+      link: 'https://shakkyaholidays.com/',
       tag: 'HTML · CSS · JavaScript · Next.js',
       year: '2026',
       desc: `Explore curated destination guides across Thailand, Vietnam, Malaysia, and Sri Lanka — then browse and book tour packages directly through a clean, intuitive interface.`,

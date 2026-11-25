@@ -76,7 +76,7 @@ def og_image():
 
 
 def og_motion():
-    """Social preview for /motion/: title + the real reel frame (all five animations)."""
+    """Social preview for /motion/: title + the real reel frame (the featured Jelly set)."""
     W, H = 1200, 630
     img = Image.new("RGB", (W, H), BG)
     d = ImageDraw.Draw(img, "RGBA")
@@ -88,10 +88,10 @@ def og_motion():
     d.text((168, 70), "MOTION LAB", font=font("consola.ttf", 26), fill=ACCENT)
     d.text((168, 104), "Faizan Safwan", font=font("segoeui.ttf", 24), fill=MUTED)
     d.text((72, 168), "Motion that ships.", font=font("segoeuib.ttf", 76), fill=TEXT)
-    d.text((76, 268), "Lottie UI animations at 5-25 KB  ·  motion graphics for launches",
+    d.text((76, 268), "Jelly set: Lottie UI animations at 18-21 KB  ·  motion graphics",
            font=font("segoeui.ttf", 28), fill=MUTED)
     # Program-monitor frame around the reel still
-    reel = Image.open(PUBLIC / "motion" / "posters" / "app-states-reel.webp").convert("RGB")
+    reel = Image.open(PUBLIC / "motion" / "posters" / "jelly-reel.webp").convert("RGB")
     rw = W - 144
     reel = reel.resize((rw, round(reel.height * rw / reel.width)), Image.LANCZOS)
     top = 350

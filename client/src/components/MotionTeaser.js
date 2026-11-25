@@ -1,13 +1,13 @@
 import React, { useRef } from 'react';
 import { LottieThumb } from './motion/LottieRail';
-import { lottieItems } from '../data/motion';
+import { featuredCollection } from '../data/motion';
 import { LINKS } from '../data/site';
 import { useInViewOnce } from '../hooks/useInViewOnce';
 import { useInViewport } from '../hooks/useInViewport';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import './MotionTeaser.css';
 
-const PREVIEW_IDS = ['payment_success', 'loading', 'upload_done'];
+const PREVIEW_IDS = ['jelly-loading', 'jelly-success', 'jelly-add-to-cart'];
 
 /** Home-page pointer to the separate Motion page (/motion/). */
 export default function MotionTeaser() {
@@ -15,7 +15,7 @@ export default function MotionTeaser() {
   const load = useInViewOnce(ref, 1);
   const visible = useInViewport(ref);
   const reduced = usePrefersReducedMotion();
-  const previews = lottieItems.filter((i) => PREVIEW_IDS.includes(i.id));
+  const previews = featuredCollection.items.filter((i) => PREVIEW_IDS.includes(i.id));
 
   return (
     <aside className="motion-teaser motion-fade" ref={ref} aria-labelledby="motion-teaser-title">
@@ -25,7 +25,8 @@ export default function MotionTeaser() {
           Lottie UI animations &amp; motion graphics
         </h3>
         <p className="motion-teaser__text">
-          App-state animations at 5–25 KB for iOS, Android and the web — inspect them frame by frame, see them on a
+          New: the {featuredCollection.title}. One glossy jelly material morphs into each app state, at{' '}
+          {featuredCollection.sizeRange} per file for iOS, Android and the web. Inspect it frame by frame, see it on a
           sample screen, and copy the embed code.
         </p>
         <a className="btn-ghost motion-teaser__link" href={LINKS.motion}>

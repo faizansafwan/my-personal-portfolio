@@ -85,5 +85,6 @@ all update from that data. Run `npm run build` and redeploy.
 
 ## Adding a Lottie animation
 
-Drop the JSON into `public/lottie/`, then add an entry to `lottieItems` in `src/data/motion.js` (title, use case,
-one-line detail, phone-screen copy). Frames, fps, canvas, layers and file size are read from the JSON itself.
+Drop the JSON (and optional `.lottie`) into `public/lottie/<set>/`, then add an entry to that set's item list in
+`src/data/motion.js` (title, use case, one-line detail, phone-screen copy). Sets live in `lottieCollections`; the
+first one is featured (inspector default, hero reel, home teaser). Frames, fps, canvas, layers and file size are read from the JSON itself.

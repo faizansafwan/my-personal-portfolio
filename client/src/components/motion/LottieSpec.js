@@ -6,7 +6,7 @@ import './LottieSpec.css';
 const BASE = import.meta.env.BASE_URL;
 
 /** Spec sheet read from the real JSON (size from the fetched bytes), plus download + embed. */
-export default function LottieSpec({ item }) {
+export default function LottieSpec({ item, collection }) {
   const meta = useLottieMeta(item.file);
   const fileName = item.file.split('/').pop();
 
@@ -17,7 +17,8 @@ export default function LottieSpec({ item }) {
     ['Duration', meta ? `${meta.seconds.toFixed(2)} s · ${meta.frames} frames` : `${item.seconds} s`],
     ['Layers', meta ? String(meta.layers.length) : '—'],
     ['Playback', item.loop ? 'Loop' : 'Play once'],
-    ['Format', meta ? `Lottie JSON · bodymovin ${meta.version}` : 'Lottie JSON'],
+    ['Format', `${meta ? `Lottie JSON · bodymovin ${meta.version}` : 'Lottie JSON'}${item.dotLottie ? ' + .lottie' : ''}`],
+    ...(collection ? [['Collection', collection.title]] : []),
   ];
 
   return (
@@ -25,7 +26,7 @@ export default function LottieSpec({ item }) {
       <div className="lottie-spec__head">
         <h3 className="lottie-spec__title">
           {item.title}
-          {item.concept ? <span className="lottie-spec__badge">Concept</span> : null}
+          {collection ? <span className="lottie-spec__badge">{collection.concept}</span> : null}
         </h3>
         <p className="lottie-spec__detail">{item.detail}</p>
       </div>
@@ -43,6 +44,15 @@ export default function LottieSpec({ item }) {
         <a className="btn-ghost lottie-spec__download" href={`${BASE}${item.file}`} download={fileName}>
           <Download size={16} aria-hidden="true" /> Download JSON
         </a>
+        {item.dotLottie ? (
+          <a
+            className="btn-ghost lottie-spec__download"
+            href={`${BASE}${item.dotLottie}`}
+            download={item.dotLottie.split('/').pop()}
+          >
+            <Download size={16} aria-hidden="true" /> .lottie
+          </a>
+        ) : null}
         <span className="lottie-spec__tags">{item.tags.map((t) => `#${t}`).join('  ')}</span>
       </div>
     </div>

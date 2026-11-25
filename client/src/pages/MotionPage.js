@@ -10,7 +10,7 @@ import LottieSpec from '../components/motion/LottieSpec';
 import EmbedCode from '../components/motion/EmbedCode';
 import VideoGrid from '../components/motion/VideoGrid';
 import ProcessFlow from '../components/motion/ProcessFlow';
-import { heroReel, lottieItems, motionVideos } from '../data/motion';
+import { featuredCollection, heroReel, lottieCollections, lottieItems, motionVideos } from '../data/motion';
 import { LINKS, SITE_URL, SITE_VERSION } from '../data/site';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll';
@@ -22,7 +22,8 @@ const BASE = import.meta.env.BASE_URL;
 const PANEL_ID = 'lottie-inspector';
 
 const sizes = lottieItems.map((i) => i.sizeKb);
-const SIZE_RANGE = `${Math.min(...sizes)}–${Math.max(...sizes)} KB`;
+const SIZE_RANGE = `${Math.round(Math.min(...sizes))}–${Math.round(Math.max(...sizes))} KB`;
+const collectionOf = (item) => lottieCollections.find((c) => c.id === item.collectionId) || featuredCollection;
 
 function jsonLd() {
   const page = `${SITE_URL}motion/`;
@@ -39,20 +40,36 @@ function jsonLd() {
     isPartOf: { '@id': `${SITE_URL}#website` },
     author: person,
     hasPart: [
-      ...lottieItems.map((item) => ({
+      ...lottieCollections.map((c) => ({
         '@type': 'CreativeWork',
-        name: `${item.title} — Lottie animation`,
-        description: `${item.useCase}. ${item.detail}`,
-        encodingFormat: 'application/json',
-        contentUrl: `${SITE_URL}${item.file}`,
-        url: `${page}#${item.id}`,
-        keywords: item.tags.join(', '),
+        name: `${c.title} (Lottie animation collection)`,
+        description: c.summary,
+        url: `${page}#${c.items[0].id}`,
         creator: person,
+        hasPart: c.items.map((item) => ({
+          '@type': 'CreativeWork',
+          name: `${item.title} (${c.title}, Lottie animation)`,
+          description: `${item.useCase}. ${item.detail}`,
+          encodingFormat: 'application/json',
+          contentUrl: `${SITE_URL}${item.file}`,
+          ...(item.dotLottie
+            ? {
+                associatedMedia: {
+                  '@type': 'MediaObject',
+                  contentUrl: `${SITE_URL}${item.dotLottie}`,
+                  encodingFormat: 'application/zip',
+                },
+              }
+            : {}),
+          url: `${page}#${item.id}`,
+          keywords: item.tags.join(', '),
+          creator: person,
+        })),
       })),
       {
         '@type': 'VideoObject',
-        name: 'App state animation set — reel',
-        description: 'All five Lottie app-state animations playing side by side.',
+        name: heroReel.title,
+        description: heroReel.description,
         thumbnailUrl: `${SITE_URL}${heroReel.poster}`,
         contentUrl: `${SITE_URL}${heroReel.src}`,
         duration: `PT${heroReel.seconds}S`,
@@ -88,7 +105,7 @@ function HeroReel({ reduced }) {
   const [idle, setIdle] = useState(false);
   const shouldPlay = userPlay ?? !reduced;
 
-  // The poster (all five animations) paints instantly; decoding starts after load + idle and the
+  // The poster (the featured set) paints instantly; decoding starts after load + idle and the
   // visitor's first scroll/tap, so the video never competes with first paint or first input.
   useEffect(() => {
     let alive = true;
@@ -126,7 +143,7 @@ function HeroReel({ reduced }) {
     <figure className="reel" ref={wrapRef}>
       <div className="reel__bar" aria-hidden="true">
         <span className="reel__rec" />
-        <span>PGM · app-states-reel.mp4</span>
+        <span>PGM · {heroReel.fileName}</span>
         <span className="reel__spec">
           {heroReel.width}×{heroReel.height} · {heroReel.fps} fps
         </span>
@@ -141,7 +158,7 @@ function HeroReel({ reduced }) {
           loop
           playsInline
           preload="none"
-          aria-label="Reel: the five Lottie app-state animations playing side by side"
+          aria-label={`Reel: ${heroReel.description}`}
         />
       </div>
       <div className="reel__foot">
@@ -161,7 +178,7 @@ function HeroReel({ reduced }) {
         </span>
       </div>
       <figcaption className="visually-hidden">
-        A three-second reel of the five Lottie animations shown below.
+        A three-second reel of the {featuredCollection.title} animations shown below.
       </figcaption>
     </figure>
   );
@@ -170,8 +187,9 @@ function HeroReel({ reduced }) {
 export default function MotionPage() {
   useRevealOnScroll();
   const reduced = usePrefersReducedMotion();
-  const [selectedId, setSelectedId] = useState(lottieItems[0].id);
+  const [selectedId, setSelectedId] = useState(featuredCollection.items[0].id);
   const selected = lottieItems.find((i) => i.id === selectedId) || lottieItems[0];
+  const collection = collectionOf(selected);
 
   // Deep links: /motion/#payment_success opens that animation in the stage.
   useEffect(() => {
@@ -215,7 +233,7 @@ export default function MotionPage() {
         <Suspense fallback={null}>
           <section className="motion-hero" aria-labelledby="motion-title">
             <div className="section-shell">
-              <p className="motion-hero__eyebrow">Motion lab · v1</p>
+              <p className="motion-hero__eyebrow">Motion lab · v2</p>
               <h1 className="motion-hero__title" id="motion-title">
                 Motion that <span className="text-accent">ships.</span>
               </h1>
@@ -223,7 +241,9 @@ export default function MotionPage() {
                 Lightweight Lottie UI animations and short motion graphics videos for apps, websites and launches.
               </p>
               <p className="motion-hero__stats">
-                <span>{lottieItems.length} Lottie animations</span>
+                <span>
+                  {lottieItems.length} Lottie animations · {lottieCollections.length} sets
+                </span>
                 <span>
                   {motionVideos.length ? `${motionVideos.length} videos` : 'videos in production'}
                 </span>
@@ -243,14 +263,30 @@ export default function MotionPage() {
             <div className="section-shell">
               <p className="section-eyebrow motion-fade">01 · Lottie UI animations</p>
               <h2 className="section-title motion-fade" id="lottie-title">
-                App-state animation set
+                App-state animation sets
               </h2>
-              <p className="motion-section__intro motion-fade">
-                Five matching animations for the moments every app has — success, loading, error, empty cart and upload
-                done. Same badge, same motion language, all vector. Pick one to inspect it frame by frame.
-              </p>
+              <div className="collection-switch motion-fade" role="group" aria-label="Animation collections">
+                {lottieCollections.map((c) => {
+                  const on = c.id === collection.id;
+                  return (
+                    <button
+                      key={c.id}
+                      type="button"
+                      className={`collection-switch__btn${on ? ' collection-switch__btn--on' : ''}`}
+                      aria-pressed={on}
+                      onClick={() => !on && select(c.items[0].id)}
+                    >
+                      <span className="collection-switch__title">{c.title}</span>
+                      <span className="collection-switch__meta">
+                        {c.label} · {c.items.length} animations · {c.sizeRange}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+              <p className="motion-section__intro motion-fade">{collection.intro}</p>
               <p className="motion-section__note motion-fade">
-                <span className="motion-section__badge">Concept set</span>
+                <span className="motion-section__badge">{collection.concept}</span>
                 Built with an AI-assisted, code-first workflow and tested frame by frame in the Lottie player.
               </p>
   
@@ -260,7 +296,7 @@ export default function MotionPage() {
                 </div>
                 <div className="inspector__rail">
                   <LottieRail
-                    items={lottieItems}
+                    items={collection.items}
                     selectedId={selected.id}
                     onSelect={select}
                     reduced={reduced}
@@ -268,8 +304,8 @@ export default function MotionPage() {
                   />
                 </div>
                 <aside className="inspector__side" aria-label={`${selected.title} details`}>
-                  <PhoneMockup item={selected} items={lottieItems} reduced={reduced} />
-                  <LottieSpec item={selected} />
+                  <PhoneMockup item={selected} items={collection.items} reduced={reduced} />
+                  <LottieSpec item={selected} collection={collection} />
                 </aside>
                 <div className="inspector__embed">
                   <EmbedCode fileName={selected.file.split('/').pop()} loop={selected.loop} />

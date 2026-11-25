@@ -380,3 +380,59 @@
 .motion-footer__links a:hover {
   color: var(--accent);
 }
+
+/* Collection switcher (Jelly set / Classic badge set) */
+.collection-switch {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: calc(var(--space-unit) * 1.5);
+  max-width: 640px;
+  margin: calc(var(--space-unit) * -1) 0 calc(var(--space-unit) * 3);
+}
+
+.collection-switch__btn {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  padding: 12px 16px;
+  text-align: left;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.collection-switch__btn:hover {
+  border-color: var(--text-muted);
+}
+
+.collection-switch__btn--on {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+}
+
+.collection-switch__title {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.collection-switch__meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.collection-switch__btn--on .collection-switch__meta {
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .collection-switch__btn {
+    transition: none;
+  }
+}

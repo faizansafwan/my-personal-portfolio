@@ -1,0 +1,7 @@
+Add your résumé PDF here as:
+
+  public/resume.pdf
+
+The site links to it from About & contact (Download résumé).
+With Vite base `/my-personal-portfolio/`, the deployed URL will be:
+  https://faizansafwan.github.io/my-personal-portfolio/resume.pdf

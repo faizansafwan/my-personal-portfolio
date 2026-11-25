@@ -1,0 +1,68 @@
+.page-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.page-backdrop__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  will-change: transform;
+}
+
+.page-backdrop__orb--1 {
+  width: 520px;
+  height: 520px;
+  top: -180px;
+  left: -120px;
+  background: color-mix(in srgb, var(--accent) 25%, transparent);
+  animation: orb-drift-a 22s var(--ease) infinite alternate;
+}
+
+.page-backdrop__orb--2 {
+  width: 440px;
+  height: 440px;
+  bottom: 10%;
+  right: -140px;
+  background: color-mix(in srgb, var(--accent) 12%, #3d4a2a);
+  animation: orb-drift-b 28s var(--ease) infinite alternate;
+}
+
+.page-backdrop__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--text) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--text) 4%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 75%);
+  opacity: 0.5;
+}
+
+@keyframes orb-drift-a {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(80px, 60px) scale(1.08);
+  }
+}
+
+@keyframes orb-drift-b {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-60px, -40px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-backdrop__orb {
+    animation: none;
+  }
+}

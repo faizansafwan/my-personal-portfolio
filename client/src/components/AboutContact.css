@@ -44,6 +44,7 @@
 .about-contact__photo {
   width: 128px;
   height: 128px;
+  transition: transform var(--duration-base) var(--ease);
   object-fit: cover;
   border-radius: var(--radius);
   border: 1px solid var(--border);
@@ -56,20 +57,17 @@
   inset: -6px;
   border-radius: calc(var(--radius) + 4px);
   border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
-  animation: ring-rotate 12s linear infinite;
+  transform: translate(6px, 6px);
+  z-index: 0;
+  transition: transform var(--duration-base) var(--ease);
 }
 
-@keyframes ring-rotate {
-  to {
-    transform: rotate(360deg);
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .about-contact__photo-wrap:hover .about-contact__photo-ring {
+    transform: translate(10px, 10px);
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .about-contact__photo-ring {
-    animation: none;
-  }
-}
 
 .about-contact__bio p {
   color: var(--text-muted);
@@ -77,7 +75,25 @@
   margin: 0 0 calc(var(--space-unit) * 2);
 }
 
+@media (min-width: 720px) {
+  .about-contact__photo {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .about-contact__photo-wrap:hover .about-contact__photo {
+    transform: scale(1.03);
+  }
+}
+
 .site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--space-unit) * 2);
   border-top: 1px solid var(--border);
   padding: calc(var(--space-unit) * 4) calc(var(--space-unit) * 3);
   margin-top: calc(var(--space-unit) * 4);
@@ -88,4 +104,28 @@
   font-size: 13px;
   color: var(--text-muted);
   font-family: var(--font-mono);
+}
+
+.site-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--space-unit) * 1) calc(var(--space-unit) * 3);
+  font-size: 13px;
+}
+
+.site-footer__links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 32px;
+}
+
+.site-footer__links a:hover {
+  color: var(--accent);
+}
+
+.site-footer__top {
+  color: var(--text) !important;
 }

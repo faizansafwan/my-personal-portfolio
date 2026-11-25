@@ -7,7 +7,7 @@ export default function HowIBuild() {
   return (
     <section className="how-build motion-section" id="how-i-build">
       <div className="section-shell">
-        <p className="section-eyebrow motion-fade">04 · How I build</p>
+        <p className="section-eyebrow motion-fade">02 · How I build</p>
         <h2 className="section-title motion-fade">Capabilities &amp; proof</h2>
 
         <div className="how-build__pipeline" role="list">

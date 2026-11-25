@@ -94,7 +94,7 @@
 .services__products-label,
 .services__catalog-label {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -130,8 +130,21 @@
   font-size: 14px;
 }
 
-.services__product-live:hover {
+.services__product-live:hover,
+.services__product-case:hover {
   text-decoration: underline;
+}
+
+.services__product-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--space-unit) * 1) calc(var(--space-unit) * 3);
+}
+
+.services__product-case {
+  font-size: 14px;
+  color: var(--text);
+  text-decoration: none;
 }
 
 .services__grid {
@@ -162,7 +175,7 @@
 
 .services__delivery {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text-muted);

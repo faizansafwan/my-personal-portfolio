@@ -1,36 +1,32 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { SITE_VERSION } from '../data/site';
-import profilePhoto from '../images/profile.png';
+import { ArrowUp } from 'lucide-react';
+import { LINKS, SITE_VERSION } from '../data/site';
+import profilePhoto from '../images/profile.webp';
 import ContactForm from './ContactForm';
-import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import './AboutContact.css';
 
 export default function AboutContact() {
-  const reduced = usePrefersReducedMotion();
+  const year = new Date().getFullYear();
 
   return (
     <section className="about-contact motion-section" id="contact">
       <div className="section-shell about-contact__about-block">
-        <p className="section-eyebrow motion-fade">08 · About</p>
+        <p className="section-eyebrow motion-fade">07 · About</p>
         <h2 className="section-title motion-fade">About me</h2>
 
         <div className="about-contact__hero-row">
-          <motion.div
-            className="about-contact__photo-wrap motion-fade"
-            whileHover={reduced ? undefined : { scale: 1.03 }}
-            transition={{ type: 'spring', stiffness: 320, damping: 22 }}
-          >
+          <div className="about-contact__photo-wrap motion-fade">
             <img
               src={profilePhoto}
-              alt="Faizan Safwan"
+              alt="Portrait of Faizan Safwan"
               className="about-contact__photo"
               width={160}
               height={160}
               loading="lazy"
+              decoding="async"
             />
             <span className="about-contact__photo-ring" aria-hidden="true" />
-          </motion.div>
+          </div>
 
           <div className="about-contact__bio motion-fade">
             <p>
@@ -39,13 +35,14 @@ export default function AboutContact() {
               reconcile, and assessment scores that need to be explainable.
             </p>
             <p>
-              At X4 Digital Labs I ship CVeezi; before that, EvalzNow and travel/commerce builds at Metro
-              Coding. I lean on TypeScript, NestJS, PostgreSQL, and practical LLM integration — with tests and
-              CI so features survive real users.
+              At X4 Digital Labs I ship CVeezi; before that, EvalzNow and travel/commerce builds at Metro Coding,
+              and an internship at SKYREK. I lean on TypeScript, NestJS, PostgreSQL, and practical LLM integration —
+              with tests and CI so features survive real users.
             </p>
             <p>
-            BSc Software Engineering (Hons), Open University of Sri Lanka (2021–2026). Product work on Unitel POS
-            and Python tooling keeps me honest about the full stack outside client delivery.
+              I also co-founded Aqra Labs, where we build Aqra POS for Sri Lankan shops — so I know what owning a
+              product after launch really means, not just shipping features. BSc Software
+              Engineering (Hons), The Open University of Sri Lanka (2021–2026).
             </p>
           </div>
         </div>
@@ -56,7 +53,23 @@ export default function AboutContact() {
       </div>
 
       <footer className="site-footer section-shell">
-        <p>© 2026 Faizan Safwan · {SITE_VERSION}</p>
+        <p>
+          © {year} Faizan Safwan · Built with React &amp; Vite · {SITE_VERSION}
+        </p>
+        <nav className="site-footer__links" aria-label="Footer">
+          <a href={LINKS.github} target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+          <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+          <a href={LINKS.aqraLabs} target="_blank" rel="noopener noreferrer">
+            Aqra Labs
+          </a>
+          <a href="#hero" className="site-footer__top">
+            Back to top <ArrowUp size={14} aria-hidden="true" />
+          </a>
+        </nav>
       </footer>
     </section>
   );

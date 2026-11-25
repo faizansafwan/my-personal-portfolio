@@ -67,7 +67,7 @@
   padding: calc(var(--space-unit) * 1.5) calc(var(--space-unit) * 2);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 16px; /* 16px+ prevents iOS Safari from zooming on focus */
   transition:
     border-color var(--duration-fast) var(--ease),
     box-shadow var(--duration-fast) var(--ease);
@@ -171,6 +171,16 @@
   color: var(--accent);
 }
 
+.contact-aside__info-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-aside__info-text a,
+.contact-aside__info-text span:last-child {
+  overflow-wrap: anywhere;
+}
+
 .contact-aside__info-card a,
 .contact-aside__info-card span:last-child {
   color: var(--text);
@@ -185,7 +195,7 @@
 .contact-aside__label {
   display: block;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -226,4 +236,66 @@
 .contact-aside__resume {
   text-align: center;
   text-decoration: none;
+}
+
+.contact-form__field label span {
+  color: var(--accent);
+}
+
+.contact-form__status:empty {
+  display: none;
+}
+
+.contact-form__fallback {
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+  background: color-mix(in srgb, var(--accent) 5%, var(--surface));
+  border-radius: var(--radius);
+  padding: calc(var(--space-unit) * 2);
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.contact-form__fallback p {
+  margin: 0 0 calc(var(--space-unit) * 1.5);
+}
+
+.contact-form__fallback strong {
+  color: var(--text);
+}
+
+.contact-form__address {
+  font-family: var(--font-mono);
+  color: var(--accent);
+}
+
+.contact-form__fallback-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--space-unit) * 1);
+}
+
+.contact-form__fallback-actions .btn-ghost {
+  padding: calc(var(--space-unit) * 1) calc(var(--space-unit) * 2);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.contact-aside__copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--ease), color var(--duration-fast) var(--ease);
+}
+
+.contact-aside__copy:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }

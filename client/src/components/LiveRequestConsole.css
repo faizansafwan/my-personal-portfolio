@@ -35,7 +35,8 @@
 
 .live-console__cmd {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
+  min-height: 40px;
   text-align: left;
   padding: calc(var(--space-unit) * 1.25) calc(var(--space-unit) * 1.5);
   border: 1px solid var(--border);
@@ -53,17 +54,13 @@
 
 .live-console__pane {
   padding: calc(var(--space-unit) * 3);
-  min-height: 280px;
-}
-
-.live-console--compact .live-console__pane {
-  min-height: 200px;
+  min-height: 340px;
 }
 
 .live-console__output {
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.55;
   color: var(--text-muted);
   white-space: pre-wrap;
@@ -76,14 +73,9 @@
 
 .live-console__cursor {
   color: var(--accent);
-  animation: blink 1s step-end infinite;
+  animation: caret-blink 1s step-end infinite;
 }
 
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
 
 @media (prefers-reduced-motion: reduce) {
   .live-console__cursor {
@@ -92,11 +84,20 @@
 }
 
 .live-console__insight {
+  min-height: 1.6em;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
   margin: calc(var(--space-unit) * 3) 0 0;
   font-size: 14px;
   color: var(--text);
   border-left: 2px solid var(--accent);
   padding-left: calc(var(--space-unit) * 2);
+}
+
+.live-console__insight--visible {
+  opacity: 1;
+  transform: none;
 }
 
 .live-console__caption {

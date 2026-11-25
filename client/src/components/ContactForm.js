@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
-import { LINKS, OPEN_TO_ROLES } from '../data/site';
+import { Check, Copy, Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { EMAIL, LINKS, LOCATION, OPEN_TO_ROLES, PHONE } from '../data/site';
 import './ContactForm.css';
 
 const socials = [
@@ -8,26 +8,55 @@ const socials = [
   { href: LINKS.github, label: 'GitHub', icon: Github },
 ];
 
-function buildMailto(form) {
-  const first = form.firstName.value.trim();
-  const last = form.lastName.value.trim();
+function buildMessage(form) {
+  const name = `${form.firstName.value.trim()} ${form.lastName.value.trim()}`.trim();
   const email = form.email.value.trim();
   const subject = form.subject.value.trim() || 'Portfolio inquiry';
   const message = form.message.value.trim();
-  const body = `From: ${first} ${last} (${email})\n\n${message}`;
-  return `mailto:fai.saf010@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const body = `From: ${name || 'Portfolio visitor'} (${email})\n\n${message}`;
+  return { subject, body };
+}
+
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 export default function ContactForm() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState('idle'); // idle | opened
+  const [draft, setDraft] = useState(null);
+  const [copied, setCopied] = useState(null); // 'email' | 'message' | null
+
+  const flashCopied = (what) => {
+    setCopied(what);
+    window.setTimeout(() => setCopied(null), 2200);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.currentTarget;
-    if (!form.email.value.trim() || !form.message.value.trim()) return;
-    window.location.href = buildMailto(form);
-    setSent(true);
-    window.setTimeout(() => setSent(false), 4000);
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    const msg = buildMessage(form);
+    setDraft(msg);
+    setStatus('opened');
+    window.location.href = `${LINKS.email}?subject=${encodeURIComponent(msg.subject)}&body=${encodeURIComponent(
+      msg.body
+    )}`;
+  };
+
+  const copyEmail = async () => {
+    if (await copyText(EMAIL)) flashCopied('email');
+  };
+
+  const copyMessage = async () => {
+    if (draft && (await copyText(`Subject: ${draft.subject}\n\n${draft.body}`))) flashCopied('message');
   };
 
   return (
@@ -40,7 +69,7 @@ export default function ContactForm() {
       </div>
 
       <div className="contact-block__grid">
-        <form className="contact-form tile-card" onSubmit={handleSubmit}>
+        <form className="contact-form tile-card" onSubmit={handleSubmit} noValidate>
           <div className="contact-form__row">
             <div className="contact-form__field">
               <label htmlFor="firstName">First name</label>
@@ -53,29 +82,29 @@ export default function ContactForm() {
           </div>
 
           <div className="contact-form__field">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">
+              Email <span aria-hidden="true">*</span>
+            </label>
             <input
               id="email"
               name="email"
               type="email"
               required
               autoComplete="email"
+              inputMode="email"
               placeholder="you@company.com"
             />
           </div>
 
           <div className="contact-form__field">
             <label htmlFor="subject">Subject</label>
-            <input
-              id="subject"
-              name="subject"
-              type="text"
-              placeholder="Project opportunity, collaboration…"
-            />
+            <input id="subject" name="subject" type="text" placeholder="Project opportunity, collaboration…" />
           </div>
 
           <div className="contact-form__field">
-            <label htmlFor="message">Message</label>
+            <label htmlFor="message">
+              Message <span aria-hidden="true">*</span>
+            </label>
             <textarea
               id="message"
               name="message"
@@ -87,9 +116,30 @@ export default function ContactForm() {
 
           <div className="contact-form__actions">
             <button type="submit" className="btn-primary contact-form__submit">
-              {sent ? 'Opening your email app…' : 'Send message →'}
+              Send message →
             </button>
-            <span className="contact-form__hint">Usually replies within a day</span>
+            <span className="contact-form__hint">Opens your email app · usually replies within a day</span>
+          </div>
+
+          <div className="contact-form__status" role="status">
+            {status === 'opened' ? (
+              <div className="contact-form__fallback">
+                <p>
+                  <strong>Your email app should open with the message ready.</strong> Nothing happened? Copy it and
+                  send it from any mail service to <span className="contact-form__address">{EMAIL}</span>.
+                </p>
+                <div className="contact-form__fallback-actions">
+                  <button type="button" className="btn-ghost" onClick={copyMessage}>
+                    {copied === 'message' ? <Check size={16} aria-hidden="true" /> : <Copy size={16} aria-hidden="true" />}
+                    {copied === 'message' ? 'Message copied' : 'Copy message'}
+                  </button>
+                  <button type="button" className="btn-ghost" onClick={copyEmail}>
+                    {copied === 'email' ? <Check size={16} aria-hidden="true" /> : <Copy size={16} aria-hidden="true" />}
+                    {copied === 'email' ? 'Address copied' : 'Copy address'}
+                  </button>
+                </div>
+              </div>
+            ) : null}
           </div>
         </form>
 
@@ -105,23 +155,31 @@ export default function ContactForm() {
           <ul className="contact-aside__info">
             <li className="tile-card contact-aside__info-card">
               <Mail size={18} aria-hidden="true" />
-              <div>
+              <div className="contact-aside__info-text">
                 <span className="contact-aside__label">Email</span>
-                <a href={LINKS.email}>fai.saf010@gmail.com</a>
+                <a href={LINKS.email}>{EMAIL}</a>
               </div>
+              <button
+                type="button"
+                className="contact-aside__copy"
+                onClick={copyEmail}
+                aria-label={copied === 'email' ? 'Email address copied' : 'Copy email address'}
+              >
+                {copied === 'email' ? <Check size={16} aria-hidden="true" /> : <Copy size={16} aria-hidden="true" />}
+              </button>
             </li>
             <li className="tile-card contact-aside__info-card">
               <Phone size={18} aria-hidden="true" />
-              <div>
+              <div className="contact-aside__info-text">
                 <span className="contact-aside__label">Phone</span>
-                <a href="tel:+94759339796">+94 75 933 9796</a>
+                <a href={PHONE.href}>{PHONE.label}</a>
               </div>
             </li>
             <li className="tile-card contact-aside__info-card">
               <MapPin size={18} aria-hidden="true" />
-              <div>
+              <div className="contact-aside__info-text">
                 <span className="contact-aside__label">Location</span>
-                <span>Mawanella, Sri Lanka</span>
+                <span>{LOCATION}</span>
               </div>
             </li>
           </ul>
@@ -131,7 +189,7 @@ export default function ContactForm() {
             <div className="contact-aside__social-row">
               {socials.map(({ href, label, icon: Icon }) => (
                 <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
-                  <Icon size={18} />
+                  <Icon size={18} aria-hidden="true" />
                 </a>
               ))}
             </div>

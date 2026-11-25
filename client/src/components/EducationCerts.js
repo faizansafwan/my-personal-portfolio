@@ -8,7 +8,7 @@ export default function EducationCerts() {
     <section className="edu-certs motion-section" id="credentials">
       <div className="section-shell edu-certs__grid">
         <div>
-          <p className="section-eyebrow motion-fade">07 · Education</p>
+          <p className="section-eyebrow motion-fade">05 · Credentials</p>
           <h2 className="section-title motion-fade">Education</h2>
           <ul className="edu-certs__edu-list">
             {education.map((item) => (

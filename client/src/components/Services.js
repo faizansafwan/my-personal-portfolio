@@ -13,7 +13,7 @@ export default function Services() {
   return (
     <section className="services motion-section" id="services">
       <div className="section-shell">
-        <p className="section-eyebrow motion-fade">02 · Services &amp; products</p>
+        <p className="section-eyebrow motion-fade">04 · Services &amp; products</p>
         <h2 className="section-title motion-fade">Build with me — solo or with Aqra Labs</h2>
         <p className="services__intro motion-fade">{servicesIntro}</p>
 
@@ -30,15 +30,14 @@ export default function Services() {
             </a>
           </div>
           <p className="services__partner-body">
-            I work efficiently with{' '}
+            I co-founded{' '}
             <a href={LINKS.aqraLabs} target="_blank" rel="noopener noreferrer">
               Aqra Labs
-            </a>
-            — a Sri Lanka–based software company delivering web systems, custom software, and mobile
-            apps for retail, healthcare, education, logistics, finance, and more. Engagements are
-            senior-led, scope is agreed up front, and you keep{' '}
-            <strong>full ownership of code and IP</strong>. I remain your technical point of contact
-            while we bring engineering, product, and go-to-market support together.
+            </a>{' '}
+            — a Sri Lanka–based software company delivering web systems, custom software, and mobile apps for
+            retail, healthcare, education, logistics, finance, and more. Engagements are senior-led, scope is
+            agreed up front, and you keep <strong>full ownership of code and IP</strong>. I stay your technical
+            point of contact while the studio brings engineering, product, and go-to-market support together.
           </p>
           <ul className="services__partner-highlights">
             {partnershipBlock.highlights.map((item) => (
@@ -48,7 +47,7 @@ export default function Services() {
         </article>
 
         <div className="services__products motion-fade">
-          <p className="services__products-label">Flagship product</p>
+          <p className="services__products-label">Our flagship product</p>
           {flagshipProducts.map(({ id, icon: Icon, name, tagline, description, link, linkLabel }) => (
               <article key={id} className="services__product tile-card">
                 <div className="services__card-head">
@@ -57,14 +56,14 @@ export default function Services() {
                 <h3 className="services__card-title">{name}</h3>
                 <p className="services__product-tagline">{tagline}</p>
                 <p className="services__card-desc">{description}</p>
-                <a
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="services__product-live"
-                >
-                  {linkLabel} ↗
-                </a>
+                <div className="services__product-links">
+                  <a href={link} target="_blank" rel="noopener noreferrer" className="services__product-live">
+                    {linkLabel} ↗
+                  </a>
+                  <a href="#work" className="services__product-case">
+                    Read the case study →
+                  </a>
+                </div>
               </article>
             )
           )}
@@ -90,7 +89,7 @@ export default function Services() {
         </div>
 
         <p className="services__cta motion-fade">
-          <a href="#contact">Tell me about your project — I&apos;ll route solo or Aqra Labs delivery →</a>
+          <a href="#contact">Tell me about your project — I’ll scope it solo or with the Aqra Labs team →</a>
         </p>
       </div>
     </section>

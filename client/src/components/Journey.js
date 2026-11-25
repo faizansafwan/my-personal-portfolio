@@ -6,7 +6,7 @@ export default function Journey() {
   return (
     <section className="journey motion-section" id="journey">
       <div className="section-shell">
-        <p className="section-eyebrow motion-fade">05 · Journey</p>
+        <p className="section-eyebrow motion-fade">03 · Journey</p>
         <h2 className="section-title motion-fade">Roles &amp; experiments</h2>
 
         <ol className="journey__feed">

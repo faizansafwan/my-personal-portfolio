@@ -13,22 +13,39 @@ export const timelineEntries = [
   },
   {
     type: 'ROLE',
+    title: 'Co-founder, Aqra Labs',
+    period: 'Ongoing · alongside full-time roles',
+    description:
+      'Co-founded a Sri Lanka–based software studio. I build Aqra POS, our retail POS and inventory SaaS, and deliver client web and software projects with the team.',
+    bullets: [
+      'Aqra POS: billing, stock, credit, suppliers, and multi-store reporting on subscription plans — live at pos.aqralabs.com.',
+      'Shipped the AI layer on the same live data: a role-aware shop assistant (English, Sinhala, Tamil) and supplier bill extraction from photos, PDFs, and Excel.',
+      'Automated testing, build validation, and deployment with GitHub Actions.',
+    ],
+  },
+  {
+    type: 'ROLE',
     title: 'Associate Full Stack Developer, Metro Coding',
     period: 'Jul 2025 — May 2026 · Remote',
     description:
-      'Embedded with three client products — assessment SaaS, a travel brand, and a fashion store — fixing integration issues and shipping features recruiters and users actually touch.',
+      'Embedded with three client products — assessment SaaS, a travel brand, and a fashion store — fixing integration issues and shipping features users actually touch.',
     bullets: [
       'EvalzNow: institutions needed competency analytics without exposing candidate data. I delivered Recharts dashboards, growth views, and admin/client/staff RBAC on a Next.js and Node stack.',
-      'Shakkya Holidays: the business needed tours, visas, and hotels in one credible site. I implemented booking flows with designers, Framer Motion polish, and SEO-friendly pages.',
+      'Shakkya Holidays: the business needed tours, visas, and hotels in one credible site. I implemented booking flows with designers, motion polish, and SEO-friendly pages.',
       'MK Design: checkout and API drift were hurting sales. I stabilized React + GraphQL integrations and responsive storefront UX with the design and product team.',
     ],
   },
   {
-    type: 'PROJECT',
-    title: 'Unitel POS',
-    period: 'Ongoing product work',
+    type: 'ROLE',
+    title: 'Intern Full Stack Engineer, SKYREK (PVT) Ltd',
+    period: 'Jun 2024 — Jan 2025',
     description:
-      'Retail POS SaaS — invoicing, inventory, returns, subscriptions, supplier document processing, and a shop-scoped assistant. Live at unitelpos.vercel.app.',
+      'Full-stack work on an online e-commerce platform built with React, Node, Express, MongoDB, Redux, Tailwind, and Firebase.',
+    bullets: [
+      'Designed and implemented backend services for admin product, stock, and rating management.',
+      'Worked with business analysts to turn requirements into accurate technical implementations.',
+      'Ran a disciplined Git workflow — feature branches, daily commits, and merge-conflict resolution across the team.',
+    ],
   },
   {
     type: 'PROJECT',

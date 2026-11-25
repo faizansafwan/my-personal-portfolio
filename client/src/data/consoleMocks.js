@@ -33,17 +33,37 @@ Content-Type: multipart/form-data
   },
   {
     id: 'shop-assistant',
-    command: 'POST /assistant/query',
-    request: `POST /assistant/query
-{ "shop_id": "s-12", "question": "Low stock items this week?" }`,
+    command: 'POST /assistant/ask',
+    request: `POST /assistant/ask
+{ "shop_id": "s-12", "question": "me sathiye low stock items monawada?" }`,
     response: `{
-  "shop_id": "s-12",
-  "answer": "3 SKUs below reorder point.",
+  "detected_language": "si-Latn",
+  "answer": "මේ සතියේ items 3ක් reorder level එකට වඩා අඩුයි.",
   "sources": ["inventory_snapshot", "sales_7d"],
+  "role_checked": "cashier",
   "advisory_only": true
 }`,
     insight:
-      'Unitel POS assistant: answers from live shop sales and stock — same data as checkout, with role permissions applied server-side.',
+      'Aqra POS assistant: answers in English, Sinhala, or Tamil — even typed in English letters — from live shop data, with staff roles checked on the server.',
+  },
+  {
+    id: 'bill-scan',
+    command: 'POST /supplier-bills/scan',
+    request: `POST /supplier-bills/scan
+Content-Type: multipart/form-data
+
+{ "file": "supplier_bill.jpg", "store_id": "st-2" }`,
+    response: `{
+  "supplier": "Lanka Distributors",
+  "bill_no": "INV-20418",
+  "lines": [
+    { "item": "Sugar 1kg", "qty": 24, "cost": 265, "batch": "B-771", "expiry": "2027-03-01" },
+    { "item": "Dhal (loose)", "qty_kg": 12.5, "cost_per_kg": 410 }
+  ],
+  "status": "ready_for_review"
+}`,
+    insight:
+      'Aqra POS bill scan: a photo, PDF, or Excel sheet becomes item lines with weights, batches, and expiry — pre-filled for a quick check before stock moves.',
   },
   {
     id: 'referral-payout',

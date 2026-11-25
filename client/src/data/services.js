@@ -1,3 +1,4 @@
+import { LINKS } from './site';
 import {
   Globe,
   Layers,
@@ -9,10 +10,10 @@ import {
 } from 'lucide-react';
 
 export const servicesIntro =
-  'Alongside full-time product engineering, I take on a selective set of client engagements — solo for focused builds, and in partnership with Aqra Labs when you need a full studio: web, software, mobile, marketing, SEO, and hosting under one accountable team.';
+  'Alongside full-time product engineering, I take on a selective set of client engagements — solo for focused builds, and through Aqra Labs, the software studio I co-founded, when you need a full team: web, software, mobile, marketing, SEO, and hosting under one accountable roof.';
 
 export const partnershipBlock = {
-  title: 'Partner delivery with Aqra Labs',
+  title: 'Studio delivery with Aqra Labs',
   highlights: [
     'Senior-led delivery — engineers accountable for the outcome',
     'Fixed scope or iterative milestones with weekly progress',
@@ -23,14 +24,14 @@ export const partnershipBlock = {
 
 export const flagshipProducts = [
   {
-    id: 'unitel-pos',
+    id: 'aqra-pos',
     icon: Store,
-    name: 'Unitel POS',
-    tagline: 'POS & inventory software for shops',
+    name: 'Aqra POS',
+    tagline: 'Billing & inventory SaaS for shops in Sri Lanka',
     description:
-      'Cloud point-of-sale and shop operations — fast billing, stock and batches, customer credit, returns, multi-store reporting, subscriptions, and an in-app assistant grounded in live shop data.',
-    link: 'https://unitelpos.vercel.app',
-    linkLabel: 'unitelpos.vercel.app',
+      'Cloud POS that bills fast, tracks every rupee, and answers questions — AI assistant in English, Sinhala & Tamil, supplier bill scanning, phone-as-scanner, offline selling, weighed items, loyalty, P&L, and multi-store stock.',
+    link: LINKS.aqraPos,
+    linkLabel: 'pos.aqralabs.com',
   },
 ];
 
@@ -59,13 +60,13 @@ export const services = [
     deliverables: [
       'Discovery → roadmap → iterative demos',
       'RBAC, integrations, and reporting where you need them',
-      'Examples: assessment SaaS, Unitel POS, document/AI pipelines',
+      'Examples: assessment SaaS, Aqra POS, document/AI pipelines',
     ],
   },
   {
     id: 'mobile',
     icon: Smartphone,
-    delivery: 'Aqra Labs partner',
+    delivery: 'Via Aqra Labs',
     title: 'Mobile application development',
     description:
       'Native iOS and Android apps that stay in sync with your web product and backend — one team accountable from design through store release.',
@@ -78,7 +79,7 @@ export const services = [
   {
     id: 'digital-marketing',
     icon: Megaphone,
-    delivery: 'Aqra Labs partner',
+    delivery: 'Via Aqra Labs',
     title: 'Digital marketing',
     description:
       'SEO, content, and paid campaigns aimed at durable visibility — not a one-month spike. Strategy tied to how your product and site are actually built.',
@@ -91,7 +92,7 @@ export const services = [
   {
     id: 'seo',
     icon: Search,
-    delivery: 'Aqra Labs partner',
+    delivery: 'Via Aqra Labs',
     title: 'SEO optimization',
     description:
       'Ethical SEO grounded in technical fundamentals and real research — structured content, metadata, and fixes that compound as your site grows.',
@@ -104,7 +105,7 @@ export const services = [
   {
     id: 'hosting',
     icon: Cloud,
-    delivery: 'Aqra Labs partner',
+    delivery: 'Via Aqra Labs',
     title: 'Web hosting & deployment',
     description:
       'Secure, fast hosting and deployment pipelines so your product stays available — monitoring, SSL, and sensible release practices out of the box.',

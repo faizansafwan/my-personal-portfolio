@@ -1,7 +1,7 @@
 export const education = [
   {
     degree: 'Bachelor of Software Engineering (Hons)',
-    institution: 'Open University of Sri Lanka',
+    institution: 'The Open University of Sri Lanka',
     period: '2021 — 2026',
   },
   {
@@ -14,9 +14,9 @@ export const education = [
 
 export const certifications = [
   { title: 'AWS Fundamentals', provider: 'Udemy', status: 'Enrolled' },
-  { title: 'AWS Cloud Technical Essentials', provider: 'Coursera', status: 'Completed' },
-  { title: 'Design Thinking for Innovation', provider: 'Coursera', status: 'Completed' },
+  { title: 'AWS Cloud Technical Essentials', provider: 'Coursera' },
+  { title: 'Design Thinking for Innovation', provider: 'Coursera' },
   { title: 'AI/ML Fundamentals', provider: 'IBM (e-Learning)', status: 'Completed' },
-  { title: 'Machine Learning Foundations', provider: 'LinkedIn', status: 'Completed' },
+  { title: 'Machine Learning Foundations', provider: 'LinkedIn' },
   { title: '50+ coding problems', provider: 'HackerRank', status: 'Completed' },
 ];

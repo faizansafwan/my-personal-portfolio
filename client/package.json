@@ -5,25 +5,19 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.5.2",
-    "@fortawesome/free-brands-svg-icons": "^6.5.2",
-    "@fortawesome/free-regular-svg-icons": "^6.5.2",
-    "@fortawesome/free-solid-svg-icons": "^6.5.2",
-    "@fortawesome/react-fontawesome": "^0.2.0",
-    "@gsap/react": "^2.1.2",
-    "framer-motion": "^12.6.5",
-    "gsap": "^3.15.0",
     "lucide-react": "^0.544.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "start": "vite",
     "dev": "vite",
-    "build": "vite build",
+    "start": "vite",
+    "build": "vite build && vite build --ssr src/entry-server.js --outDir dist-server && node scripts/prerender.js",
+    "build:client": "vite build",
     "preview": "vite preview",
+    "icons": "python scripts/generate-icons.py",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist --dotfiles",
     "test": "echo \"No test runner configured\""
   },
   "devDependencies": {

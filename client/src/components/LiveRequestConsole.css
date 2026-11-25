@@ -1,0 +1,108 @@
+.live-console {
+  padding: 0;
+  overflow: hidden;
+}
+
+.live-console__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .live-console__layout {
+    grid-template-columns: minmax(180px, 220px) 1fr;
+  }
+}
+
+.live-console__rail {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: calc(var(--space-unit) * 1);
+  padding: calc(var(--space-unit) * 2);
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 40%, var(--surface));
+}
+
+@media (min-width: 768px) {
+  .live-console__rail {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    border-bottom: none;
+    border-right: 1px solid var(--border);
+  }
+}
+
+.live-console__cmd {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-align: left;
+  padding: calc(var(--space-unit) * 1.25) calc(var(--space-unit) * 1.5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--ease), color var(--duration-fast) var(--ease);
+}
+
+.live-console__cmd--active {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.live-console__pane {
+  padding: calc(var(--space-unit) * 3);
+  min-height: 280px;
+}
+
+.live-console--compact .live-console__pane {
+  min-height: 200px;
+}
+
+.live-console__output {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.55;
+  color: var(--text-muted);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.live-console__output code {
+  font-family: inherit;
+}
+
+.live-console__cursor {
+  color: var(--accent);
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-console__cursor {
+    animation: none;
+  }
+}
+
+.live-console__insight {
+  margin: calc(var(--space-unit) * 3) 0 0;
+  font-size: 14px;
+  color: var(--text);
+  border-left: 2px solid var(--accent);
+  padding-left: calc(var(--space-unit) * 2);
+}
+
+.live-console__caption {
+  margin: 0;
+  padding: calc(var(--space-unit) * 2) calc(var(--space-unit) * 3);
+  font-size: 13px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+}

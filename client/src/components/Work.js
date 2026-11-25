@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ArrowUpRight, ChevronDown } from 'lucide-react';
 import { projects, earlierProjects } from '../data/projects';
 import { LINKS } from '../data/site';
+import MotionTeaser from './MotionTeaser';
 import './Work.css';
 
 function slug(name) {
@@ -193,6 +194,8 @@ export default function Work() {
             );
           })}
         </div>
+
+        <MotionTeaser />
 
         <div className="work-archive">
           <div className="work-archive__head motion-fade">

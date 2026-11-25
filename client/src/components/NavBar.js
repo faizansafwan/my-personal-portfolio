@@ -1,11 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { OPEN_TO_ROLES, SITE_VERSION } from '../data/site';
+import { LINKS, OPEN_TO_ROLES, SITE_VERSION } from '../data/site';
 import { useActiveSection } from '../hooks/useActiveSection';
 import './NavBar.css';
 
+const BASE = import.meta.env.BASE_URL;
+
+/** `page: 'motion'` marks a link to the separate Motion page; the rest are home-page sections. */
 const NAV_LINKS = [
   { id: 'work', label: 'Work' },
+  { id: 'motion', label: 'Motion', page: 'motion' },
   { id: 'how-i-build', label: 'How I build' },
   { id: 'journey', label: 'Journey' },
   { id: 'services', label: 'Services' },
@@ -13,14 +17,27 @@ const NAV_LINKS = [
   { id: 'blog', label: 'Blog' },
   { id: 'contact', label: 'Contact' },
 ];
-const SECTION_IDS = NAV_LINKS.map((l) => l.id);
+const HOME_SECTION_IDS = NAV_LINKS.filter((l) => !l.page).map((l) => l.id);
+const NO_SECTIONS = [];
 
-export default function NavBar() {
+/**
+ * @param {{ variant?: 'home' | 'motion' }} props
+ *   home   — section links are in-page anchors, active link follows scroll
+ *   motion — section links point back to the home page; "Motion" is active
+ */
+export default function NavBar({ variant = 'home' }) {
+  const isHome = variant === 'home';
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const active = useActiveSection(SECTION_IDS);
+  const activeSection = useActiveSection(isHome ? HOME_SECTION_IDS : NO_SECTIONS);
+  const active = isHome ? activeSection : 'motion';
   const menuBtnRef = useRef(null);
   const firstLinkRef = useRef(null);
+
+  const hrefFor = (link) => {
+    if (link.page === 'motion') return LINKS.motion;
+    return isHome ? `#${link.id}` : `${BASE}#${link.id}`;
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 48);
@@ -47,12 +64,20 @@ export default function NavBar() {
   }, [menuOpen]);
 
   const statusLabel = OPEN_TO_ROLES ? 'Open to roles' : 'Heads-down, but say hi';
+  const currentAttr = (link) => {
+    if (active !== link.id) return undefined;
+    return link.page ? 'page' : 'location';
+  };
 
   return (
     <>
       <header className={`site-nav ${scrolled || menuOpen ? 'site-nav--scrolled' : ''}`}>
         <div className="site-nav__inner section-shell">
-          <a href="#hero" className="site-nav__wordmark" aria-label="Faizan Safwan — back to top">
+          <a
+            href={isHome ? '#hero' : BASE}
+            className="site-nav__wordmark"
+            aria-label={isHome ? 'Faizan Safwan — back to top' : 'Faizan Safwan — home page'}
+          >
             <span className="site-nav__mark" aria-hidden="true">
               F<span>_</span>
             </span>
@@ -60,14 +85,16 @@ export default function NavBar() {
           </a>
 
           <nav className="site-nav__links" aria-label="Primary">
-            {NAV_LINKS.map(({ id, label }) => (
+            {NAV_LINKS.map((link) => (
               <a
-                key={id}
-                href={`#${id}`}
-                className={`site-nav__link${active === id ? ' site-nav__link--active' : ''}`}
-                aria-current={active === id ? 'location' : undefined}
+                key={link.id}
+                href={hrefFor(link)}
+                className={`site-nav__link${active === link.id ? ' site-nav__link--active' : ''}${
+                  link.page ? ' site-nav__link--page' : ''
+                }`}
+                aria-current={currentAttr(link)}
               >
-                {label}
+                {link.label}
               </a>
             ))}
           </nav>
@@ -104,17 +131,18 @@ export default function NavBar() {
         inert={menuOpen ? undefined : ''}
       >
         <nav className="site-nav__overlay-nav" aria-label="Mobile">
-          {NAV_LINKS.map(({ id, label }, i) => (
+          {NAV_LINKS.map((link, i) => (
             <a
-              key={id}
+              key={link.id}
               ref={i === 0 ? firstLinkRef : undefined}
-              href={`#${id}`}
-              className="site-nav__overlay-link"
+              href={hrefFor(link)}
+              className={`site-nav__overlay-link${active === link.id ? ' site-nav__overlay-link--active' : ''}`}
+              aria-current={currentAttr(link)}
               style={{ '--i': i }}
               onClick={() => setMenuOpen(false)}
             >
-              <span className="site-nav__overlay-index">0{i + 1}</span>
-              {label}
+              <span className="site-nav__overlay-index">{String(i + 1).padStart(2, '0')}</span>
+              {link.label}
             </a>
           ))}
         </nav>

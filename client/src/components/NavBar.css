@@ -71,7 +71,7 @@
 .site-nav__links {
   display: none;
   align-items: center;
-  gap: calc(var(--space-unit) * 3);
+  gap: calc(var(--space-unit) * 2.75);
   margin-left: auto;
 }
 
@@ -112,6 +112,23 @@
 
 .site-nav__link--active {
   color: var(--text);
+}
+
+/* "Motion" opens a separate page: a small lime dot marks it as a destination, not a section. */
+.site-nav__link--page::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  vertical-align: middle;
+  transform: translateY(-1px);
+}
+
+.site-nav__overlay-link--active {
+  color: var(--accent);
 }
 
 .site-nav__meta {
@@ -204,7 +221,7 @@
 .site-nav__overlay-nav {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--space-unit) * 2.5);
+  gap: calc(var(--space-unit) * 2);
   flex: 1;
 }
 

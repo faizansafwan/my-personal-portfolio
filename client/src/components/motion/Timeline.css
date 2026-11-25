@@ -1,0 +1,138 @@
+.timeline {
+  --label-w: 112px;
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--bg) 60%, var(--surface));
+  padding: calc(var(--space-unit) * 1) 0;
+  font-family: var(--font-mono);
+  user-select: none;
+}
+
+@media (max-width: 520px) {
+  .timeline {
+    --label-w: 76px;
+  }
+}
+
+.timeline__row {
+  display: grid;
+  grid-template-columns: var(--label-w) 1fr;
+  align-items: center;
+  padding-right: calc(var(--space-unit) * 2);
+}
+
+.timeline__label {
+  padding: 0 calc(var(--space-unit) * 1.5);
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.timeline__counter {
+  color: var(--accent);
+  font-size: 12px;
+}
+
+/* Ruler: the scrubbable area. 44px tall for touch. */
+.timeline__ruler {
+  position: relative;
+  height: 44px;
+  cursor: ew-resize;
+  touch-action: none;
+  border-radius: 4px;
+  background-image:
+    repeating-linear-gradient(
+      to right,
+      color-mix(in srgb, var(--text) 22%, transparent) 0 1px,
+      transparent 1px var(--tick)
+    );
+  background-size: 100% 10px;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  border-bottom: 1px solid var(--border);
+}
+
+.timeline__ruler:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.timeline__ruler[aria-disabled='true'] {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.timeline__mark {
+  position: absolute;
+  top: 6px;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.timeline__mark:first-child {
+  transform: none;
+}
+
+.timeline__mark:last-child {
+  transform: translateX(-100%);
+}
+
+@media (max-width: 520px) {
+  .timeline__mark:nth-child(even) {
+    display: none;
+  }
+}
+
+.timeline__tracks {
+  list-style: none;
+  margin: calc(var(--space-unit) * 1) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.timeline__lane {
+  position: relative;
+  height: 12px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--text) 4%, transparent);
+}
+
+.timeline__bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--accent) 28%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+/* Playhead spans ruler + all tracks, positioned by --p (0..1) inside the lane column. */
+.timeline__playhead {
+  position: absolute;
+  top: calc(var(--space-unit) * 1);
+  bottom: calc(var(--space-unit) * 1);
+  left: calc(var(--label-w) + (100% - var(--label-w) - var(--space-unit) * 2) * var(--p));
+  width: 2px;
+  margin-left: -1px;
+  background: var(--accent);
+  pointer-events: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+.timeline__playhead::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translateX(-50%) rotate(45deg);
+  background: var(--accent);
+  border-radius: 2px;
+}

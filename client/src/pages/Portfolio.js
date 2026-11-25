@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import PageBackdrop from '../components/PageBackdrop';
 import NavBar from '../components/NavBar';
 import Hero from '../components/Hero';
@@ -15,6 +15,8 @@ import { useRevealOnScroll } from '../hooks/useRevealOnScroll';
  * Section order: proof first (work, how, journey), then the service offer,
  * then supporting credentials, writing, and the close.
  */
+const SECTIONS = [Hero, Work, HowIBuild, Journey, Services, EducationCerts, BlogSection, AboutContact];
+
 export default function Portfolio() {
   useRevealOnScroll();
 
@@ -26,14 +28,12 @@ export default function Portfolio() {
       <PageBackdrop />
       <NavBar />
       <main>
-        <Hero />
-        <Work />
-        <HowIBuild />
-        <Journey />
-        <Services />
-        <EducationCerts />
-        <BlogSection />
-        <AboutContact />
+        {/* Each boundary hydrates as its own interruptible chunk, so first input isn't blocked by one long task. */}
+        {SECTIONS.map((Section, i) => (
+          <Suspense key={i} fallback={null}>
+            <Section />
+          </Suspense>
+        ))}
       </main>
     </>
   );

@@ -1,0 +1,100 @@
+.lottie-thumb {
+  width: 100%;
+  height: 100%;
+}
+
+.lottie-thumb svg {
+  display: block;
+}
+
+.lottie-rail {
+  min-width: 0;
+}
+
+/* Phones: horizontal scroll-snap strip. Desktop: 5-column grid. */
+.lottie-rail__list {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(168px, 44%);
+  gap: calc(var(--space-unit) * 1.5);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 4px 4px calc(var(--space-unit) * 1.5);
+  margin: -4px;
+  scrollbar-width: thin;
+}
+
+@media (min-width: 900px) {
+  .lottie-rail__list {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    overflow: visible;
+    padding-bottom: 4px;
+  }
+}
+
+.lottie-rail__tab {
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space-unit) * 1.25);
+  min-width: 0;
+  padding: calc(var(--space-unit) * 1.25);
+  text-align: left;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 2px);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-base) var(--ease),
+    box-shadow var(--duration-base) var(--ease),
+    transform var(--duration-base) var(--ease);
+}
+
+@media (hover: hover) {
+  .lottie-rail__tab:hover {
+    border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--accent) 7%, transparent);
+  }
+}
+
+.lottie-rail__tab--on {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), 0 12px 32px color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.lottie-rail__thumb {
+  display: block;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius);
+  background: var(--bg);
+  padding: 12%;
+}
+
+.lottie-rail__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.lottie-rail__title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.lottie-rail__use {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.lottie-rail__meta {
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+}

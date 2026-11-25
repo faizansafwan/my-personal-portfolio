@@ -1,0 +1,92 @@
+.lottie-spec {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space-unit) * 2);
+}
+
+.lottie-spec__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--space-unit) * 1);
+  margin: 0 0 4px;
+  font-family: var(--font-display);
+  font-size: 22px;
+}
+
+.lottie-spec__badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border));
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+.lottie-spec__detail {
+  margin: 0;
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.lottie-spec__grid {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.lottie-spec__row {
+  padding: calc(var(--space-unit) * 1.25) calc(var(--space-unit) * 1.5);
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 40%, var(--surface));
+}
+
+.lottie-spec__row:nth-child(odd) {
+  border-right: 1px solid var(--border);
+}
+
+.lottie-spec__row:last-child {
+  grid-column: 1 / -1;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.lottie-spec__row dt {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.lottie-spec__row dd {
+  margin: 2px 0 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text);
+}
+
+.lottie-spec__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--space-unit) * 1.5);
+}
+
+.lottie-spec__download {
+  min-height: 44px;
+}
+
+.lottie-spec__tags {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}

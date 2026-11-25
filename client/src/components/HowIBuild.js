@@ -13,7 +13,7 @@ export default function HowIBuild() {
         <div className="how-build__pipeline" role="list">
           {capabilities.map((cap, index) => (
             <React.Fragment key={cap.index}>
-              <article className="how-build__tile tile-card motion-fade" role="listitem">
+              <div className="how-build__tile tile-card motion-fade" role="listitem">
                 <span className="how-build__index">{cap.index}</span>
                 <h3 className="how-build__tile-title">{cap.title}</h3>
                 <p className="how-build__tile-desc">{cap.description}</p>
@@ -22,7 +22,7 @@ export default function HowIBuild() {
                     <span key={tag}>{tag}</span>
                   ))}
                 </div>
-              </article>
+              </div>
               {index < capabilities.length - 1 ? (
                 <span className="how-build__connector" aria-hidden="true" />
               ) : null}

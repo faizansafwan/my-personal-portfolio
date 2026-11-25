@@ -75,6 +75,37 @@ def og_image():
     img.save(PUBLIC / "og-image.png", optimize=True)
 
 
+def og_motion():
+    """Social preview for /motion/: title + the real reel frame (all five animations)."""
+    W, H = 1200, 630
+    img = Image.new("RGB", (W, H), BG)
+    d = ImageDraw.Draw(img, "RGBA")
+    for x in range(0, W, 64):
+        d.line([(x, 0), (x, H)], fill=(245, 245, 240, 10))
+    for y in range(0, H, 64):
+        d.line([(0, y), (W, y)], fill=(245, 245, 240, 10))
+    img.paste(draw_mark(72), (72, 64), draw_mark(72))
+    d.text((168, 70), "MOTION LAB", font=font("consola.ttf", 26), fill=ACCENT)
+    d.text((168, 104), "Faizan Safwan", font=font("segoeui.ttf", 24), fill=MUTED)
+    d.text((72, 168), "Motion that ships.", font=font("segoeuib.ttf", 76), fill=TEXT)
+    d.text((76, 268), "Lottie UI animations at 5-25 KB  ·  motion graphics for launches",
+           font=font("segoeui.ttf", 28), fill=MUTED)
+    # Program-monitor frame around the reel still
+    reel = Image.open(PUBLIC / "motion" / "posters" / "app-states-reel.webp").convert("RGB")
+    rw = W - 144
+    reel = reel.resize((rw, round(reel.height * rw / reel.width)), Image.LANCZOS)
+    top = 350
+    d.rounded_rectangle([70, top - 2, 70 + rw + 3, top + reel.height + 40], radius=12, outline=BORDER, width=2)
+    img.paste(reel, (72, top))
+    bar_y = top + reel.height + 18
+    d.line([(150, bar_y), (W - 160, bar_y)], fill=(245, 245, 240, 40), width=6)
+    px = 150 + int((W - 310) * 0.86)
+    d.line([(px, bar_y - 10), (px, bar_y + 10)], fill=ACCENT, width=3)
+    d.text((92, bar_y - 12), "PGM", font=font("consola.ttf", 20), fill=MUTED)
+    d.text((W - 150, bar_y - 12), "60 fps", font=font("consola.ttf", 20), fill=ACCENT)
+    img.save(PUBLIC / "og-motion.png", optimize=True)
+
+
 if __name__ == "__main__":
     (PUBLIC / "favicon.svg").write_text(SVG, encoding="utf-8")
     draw_mark(256).save(PUBLIC / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48)])
@@ -83,4 +114,5 @@ if __name__ == "__main__":
     draw_mark(512).save(PUBLIC / "icon-512.png", optimize=True)
     draw_mark(512, rounded=False, scale=0.72).convert("RGB").save(PUBLIC / "icon-maskable-512.png", optimize=True)
     og_image()
+    og_motion()
     print("icons + og-image written to", PUBLIC)

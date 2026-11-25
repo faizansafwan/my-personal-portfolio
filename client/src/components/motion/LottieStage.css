@@ -1,0 +1,178 @@
+.lottie-stage {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space-unit) * 1.5);
+  min-width: 0;
+}
+
+.lottie-stage__screen {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 2px);
+  overflow: hidden;
+  transition: background-color var(--duration-base) var(--ease);
+}
+
+.lottie-stage__screen:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.lottie-stage__screen--dark {
+  background: var(--bg);
+}
+
+.lottie-stage__screen--light {
+  background: var(--text);
+}
+
+.lottie-stage__screen--checker {
+  background-color: var(--text);
+  background-image: conic-gradient(
+    color-mix(in srgb, var(--text) 82%, var(--text-muted)) 25%,
+    transparent 0 50%,
+    color-mix(in srgb, var(--text) 82%, var(--text-muted)) 0 75%,
+    transparent 0
+  );
+  background-size: 24px 24px;
+}
+
+.lottie-stage__anim {
+  position: absolute;
+  inset: 10%;
+  animation: stage-fade var(--duration-base) var(--ease) both;
+}
+
+.lottie-stage__anim svg {
+  display: block;
+}
+
+@keyframes stage-fade {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lottie-stage__anim {
+    animation: none;
+  }
+}
+
+.lottie-stage__hud {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: calc(var(--space-unit) * 2);
+  padding: calc(var(--space-unit) * 1) calc(var(--space-unit) * 1.5);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  background: linear-gradient(to top, color-mix(in srgb, var(--bg) 85%, transparent), transparent);
+  pointer-events: none;
+}
+
+.lottie-stage__screen--light .lottie-stage__hud,
+.lottie-stage__screen--checker .lottie-stage__hud {
+  color: var(--bg);
+  background: linear-gradient(to top, color-mix(in srgb, var(--text) 85%, transparent), transparent);
+}
+
+.lottie-stage__error {
+  position: absolute;
+  inset: auto 0 40% 0;
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.lottie-stage__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--space-unit) * 1.5);
+}
+
+.lottie-stage__group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.lottie-stage__btn,
+.lottie-stage__chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 calc(var(--space-unit) * 1.25);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease),
+    background var(--duration-fast) var(--ease);
+}
+
+.lottie-stage__btn:hover,
+.lottie-stage__chip:hover {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+}
+
+.lottie-stage__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.lottie-stage__btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+.lottie-stage__btn--primary:hover {
+  color: var(--bg);
+}
+
+.lottie-stage__btn--on,
+.lottie-stage__chip--on {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+}
+
+.lottie-stage__swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+}
+
+.lottie-stage__swatch--dark {
+  background: var(--bg);
+}
+
+.lottie-stage__swatch--light {
+  background: var(--text);
+}
+
+.lottie-stage__swatch--checker {
+  background-color: var(--text);
+  background-image: conic-gradient(var(--text-muted) 25%, transparent 0 50%, var(--text-muted) 0 75%, transparent 0);
+  background-size: 6px 6px;
+}

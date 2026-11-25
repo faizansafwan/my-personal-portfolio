@@ -38,21 +38,95 @@
   border-color: var(--accent);
 }
 
-/* Masonry feel via columns: every card keeps its own aspect ratio, so nothing shifts. */
-.video-grid {
+/* ---------- Projects: a header, then the project's cuts side by side ---------- */
+
+.video-projects {
   list-style: none;
   margin: 0;
   padding: 0;
-  columns: 3 280px;
-  column-gap: calc(var(--space-unit) * 2);
+  display: grid;
+  gap: calc(var(--space-unit) * 6);
 }
 
-.video-card {
-  break-inside: avoid;
-  margin-bottom: calc(var(--space-unit) * 2);
+.video-project {
+  display: grid;
+  gap: calc(var(--space-unit) * 3);
 }
 
-.video-card__btn {
+.video-project__head {
+  max-width: 68ch;
+}
+
+.video-project__eyebrow {
+  margin: 0 0 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.video-project__owner {
+  color: var(--accent);
+}
+
+.video-project__title {
+  margin: 0 0 calc(var(--space-unit) * 1);
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.video-project__summary {
+  margin: 0 0 calc(var(--space-unit) * 1.5);
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.video-project__facts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px calc(var(--space-unit) * 2);
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.video-project__facts a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 44px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.video-project__facts a:hover {
+  text-decoration: underline;
+}
+
+/*
+ * Cuts share one row at equal height: each card grows in proportion to its aspect ratio (--ar = w / h).
+ * On narrow screens a wide cut wraps to its own line; portrait cuts are capped so they stay phone-sized.
+ */
+.video-project__cuts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--space-unit) * 2);
+}
+
+.video-cut {
+  flex: var(--ar) 1 calc(var(--ar) * 220px);
+  min-width: 0;
+  max-width: calc(var(--ar) * 640px);
+}
+
+.video-cut__btn {
   display: block;
   width: 100%;
   padding: 0;
@@ -70,19 +144,19 @@
 }
 
 @media (hover: hover) {
-  .video-card__btn:hover {
+  .video-cut__btn:hover {
     border-color: color-mix(in srgb, var(--accent) 34%, var(--border));
     box-shadow: 0 12px 40px color-mix(in srgb, var(--accent) 7%, transparent);
   }
 }
 
-.video-card__media {
+.video-cut__media {
   position: relative;
   display: block;
   background: var(--bg);
 }
 
-.video-card__video {
+.video-cut__video {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -90,66 +164,45 @@
   object-fit: cover;
 }
 
-.video-card__badges {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-
-.video-card__badges span {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text);
-  background: color-mix(in srgb, var(--bg) 75%, transparent);
-  border: 1px solid color-mix(in srgb, var(--text) 12%, transparent);
-  border-radius: 4px;
-  padding: 2px 6px;
-}
-
-.video-card__play {
+.video-cut__play {
   position: absolute;
   right: 10px;
   bottom: 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: var(--accent);
   color: var(--bg);
 }
 
-.video-card__body {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: calc(var(--space-unit) * 1.5) calc(var(--space-unit) * 2) calc(var(--space-unit) * 2);
-}
-
-.video-card__title {
+.video-cut__body {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: calc(var(--space-unit) * 1);
+  justify-content: space-between;
+  gap: 4px calc(var(--space-unit) * 1);
+  padding: calc(var(--space-unit) * 1.5) calc(var(--space-unit) * 2);
+}
+
+.video-cut__label {
   font-family: var(--font-display);
   font-size: 16px;
   font-weight: 600;
 }
 
-.video-card__owner {
+.video-cut__meta {
   font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 400;
-  color: var(--accent);
+  font-size: 12px;
+  color: var(--text-muted);
 }
 
-.video-card__summary {
-  font-size: 14px;
-  color: var(--text-muted);
+@media (prefers-reduced-motion: reduce) {
+  .video-cut__btn {
+    transition: none;
+  }
 }
 
 .video-grid__none {

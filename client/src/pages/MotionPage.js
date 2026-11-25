@@ -10,7 +10,14 @@ import LottieSpec from '../components/motion/LottieSpec';
 import EmbedCode from '../components/motion/EmbedCode';
 import VideoGrid from '../components/motion/VideoGrid';
 import ProcessFlow from '../components/motion/ProcessFlow';
-import { featuredCollection, heroReel, lottieCollections, lottieItems, motionVideos } from '../data/motion';
+import {
+  featuredCollection,
+  heroReel,
+  lottieCollections,
+  lottieItems,
+  motionProjects,
+  motionVideos,
+} from '../data/motion';
 import { LINKS, SITE_URL, SITE_VERSION } from '../data/site';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll';
@@ -81,12 +88,15 @@ function jsonLd() {
       ...motionVideos.map((v) => ({
         '@type': 'VideoObject',
         name: v.title,
-        description: v.summary,
+        description: v.project.summary,
         thumbnailUrl: `${SITE_URL}${v.poster}`,
         ...(v.src ? { contentUrl: `${SITE_URL}${v.src}` } : {}),
         ...(v.embedUrl ? { embedUrl: v.embedUrl } : {}),
-        duration: `PT${Math.round(v.seconds)}S`,
-        uploadDate: v.uploadDate,
+        duration: `PT${Math.floor(v.seconds / 60)}M${Math.round(v.seconds % 60)}S`,
+        uploadDate: v.project.uploadDate,
+        width: v.width,
+        height: v.height,
+        url: `${page}#videos`,
         creator: person,
       })),
     ],
@@ -245,7 +255,7 @@ export default function MotionPage() {
                   {lottieItems.length} Lottie animations · {lottieCollections.length} sets
                 </span>
                 <span>
-                  {motionVideos.length ? `${motionVideos.length} videos` : 'videos in production'}
+                  {motionVideos.length ? `${motionVideos.length} motion videos` : 'videos in production'}
                 </span>
                 <span>{SIZE_RANGE} per animation</span>
                 <span>iOS · Android · Web</span>
@@ -322,10 +332,10 @@ export default function MotionPage() {
                 Promos, explainers &amp; social cuts
               </h2>
               <p className="motion-section__intro motion-fade">
-                Short videos for launches and feeds — delivered in 16:9, 9:16 and 1:1, with captions in English, Sinhala
-                or Tamil.
+                Launch films and social cuts, grouped by project. Each project ships in the formats it runs in: 16:9,
+                9:16 or 1:1, with captions in English, Sinhala or Tamil on request. Tap a cut to play it with sound.
               </p>
-              <VideoGrid videos={motionVideos} reduced={reduced} />
+              <VideoGrid projects={motionProjects} reduced={reduced} />
             </div>
           </section>
         </Suspense>

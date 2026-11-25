@@ -1,12 +1,22 @@
 /**
- * Single source of truth for the Motion page (/motion/).
- * Copy lives here; technical metadata (frames, fps, canvas, layers, size) is read
- * from each Lottie JSON at runtime so it can never drift from the real file.
+ * Single source of truth for the Motion page (/motion/), in two parallel halves:
+ *
+ *   Lottie UI animations   lottieCollections → items        (flat list: lottieItems)
+ *   Motion graphics videos motionProjects    → cuts         (flat list: motionVideos)
+ *
+ * Copy lives here; Lottie technical metadata (frames, fps, canvas, layers, size) is read
+ * from each JSON at runtime so it can never drift from the real file.
  */
+
+/* ------------------------------------------------------------------ Lottie UI animations */
 
 /**
  * Lottie collections. The first one is featured: it opens in the inspector and fills the hero
  * reel and the home-page teaser. Item ids must be unique across collections (deep-link hashes).
+ *
+ * Collection fields: id, title, label, concept, summary, intro, sizeRange, items
+ * Item fields: id, title, useCase, detail, file (JSON), dotLottie (optional), sizeKb, fps, seconds,
+ *   loop, tags, screen (phone-mockup copy), flowFrom (optional id of the state that precedes it)
  */
 const jellyItems = [
   {
@@ -188,28 +198,78 @@ export const heroReel = {
   uploadDate: '2026-11-25',
 };
 
+/* ------------------------------------------------------------------ Motion graphics videos */
+
 /**
- * Motion graphics videos. Add one object per video — see README "Adding a motion video".
+ * Motion graphics, grouped by project. A project is one brief; its cuts are the formats it shipped in
+ * (16:9 film, 9:16 reel, 1:1 post…). See README "Adding a motion video".
  *
- * {
- *   id: 'aqra-pos-promo',                     // unique, kebab-case
- *   title: 'Aqra POS — launch promo',
- *   client: null | 'Client name',             // null + concept: true for self-initiated work
- *   concept: true,
- *   category: 'App promo' | 'Explainer' | 'Social ad' | 'Logo',
- *   aspect: '16:9' | '9:16' | '1:1',
- *   seconds: 15,
- *   src: 'motion/videos/aqra-pos-promo.mp4' | null,       // self-hosted MP4 in public/
- *   embedUrl: 'https://www.youtube-nocookie.com/embed/ID' | null,
- *   poster: 'motion/posters/aqra-pos-promo.webp',         // WebP, under 150 KB
- *   captions: 'motion/captions/aqra-pos-promo.vtt' | null,
- *   summary: 'One line on the idea and the result.',
- *   tools: ['After Effects', 'Lottie'],
- *   languages: ['English', 'Sinhala', 'Tamil'],
- *   uploadDate: '2026-11-25',
- * }
+ * Project fields
+ *   id, title, category ('App promo' | 'Explainer' | 'Social ad' | 'Logo'), summary, uploadDate
+ *   owner: { kind: 'client' | 'own' | 'concept', name, note? }   // shown as "Client · X", "Own product · X", "Concept"
+ *   languages: on-screen / spoken languages · tools: optional, only what was really used
+ *   link: optional { label, href } to the product or client
+ * Cut fields
+ *   id (unique, kebab-case), label ('Main film' | 'Social reel' …), aspect ('16:9' | '9:16' | '1:1'),
+ *   seconds, width, height,
+ *   src: self-hosted MP4 (H.264, ≤ 1080p, under 8 MB) or null with embedUrl,
+ *   preview: short silent MP4 for hover (≈ 6 s, under 100 KB), poster: WebP under 150 KB,
+ *   captions: WebVTT or null
  */
-export const motionVideos = [];
+export const motionProjects = [
+  {
+    id: 'aqra-pos-launch',
+    title: 'Aqra POS launch promo',
+    category: 'App promo',
+    owner: { kind: 'own', name: 'Aqra Labs', note: 'my company' },
+    summary:
+      'Launch film for Aqra POS, the billing and stock app for Sri Lankan shops. It sets up the old way (hand-typed ' +
+      'supplier bills, credit in a notebook, profit only at month end), then shows three features: snap the bill, ' +
+      'ask the AI shop assistant, and scan with your phone.',
+    languages: ['English (on-screen text)'],
+    link: { label: 'See Aqra POS', href: 'https://aqralabs.com/products/aqra-pos/' },
+    uploadDate: '2026-11-19',
+    cuts: [
+      {
+        id: 'aqra-pos-launch-16x9',
+        label: 'Main film',
+        aspect: '16:9',
+        seconds: 63,
+        width: 1920,
+        height: 1080,
+        src: 'motion/videos/aqra-pos-launch-16x9.mp4',
+        preview: 'motion/videos/aqra-pos-launch-16x9-preview.mp4',
+        poster: 'motion/posters/aqra-pos-launch-16x9.webp',
+        captions: null,
+      },
+      {
+        id: 'aqra-pos-launch-9x16',
+        label: 'Social reel',
+        aspect: '9:16',
+        seconds: 30,
+        width: 720,
+        height: 1280,
+        src: 'motion/videos/aqra-pos-launch-9x16.mp4',
+        preview: 'motion/videos/aqra-pos-launch-9x16-preview.mp4',
+        poster: 'motion/posters/aqra-pos-launch-9x16.webp',
+        captions: null,
+      },
+    ],
+  },
+];
+
+/** Every cut as one flat list (lightbox order, counts, JSON-LD); each cut carries its project. */
+export const motionVideos = motionProjects.flatMap((project) =>
+  project.cuts.map((cut) => ({ ...cut, project, title: `${project.title}: ${cut.label}` }))
+);
+
+export function ownerLabel(owner) {
+  if (owner.kind === 'client') return `Client · ${owner.name}`;
+  if (owner.kind === 'own') return `Own product · ${owner.name}`;
+  return 'Concept';
+}
+
+/* ------------------------------------------------------------------ Shared */
 
 export const videoCategories = ['App promo', 'Explainer', 'Social ad', 'Logo'];
 export const videoAspects = ['16:9', '9:16', '1:1'];

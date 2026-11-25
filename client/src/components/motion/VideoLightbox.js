@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-import { deliverables, formatDuration } from '../../data/motion';
+import { ArrowUpRight, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { formatDuration, ownerLabel } from '../../data/motion';
 import './VideoLightbox.css';
 
 const BASE = import.meta.env.BASE_URL;
@@ -16,7 +16,10 @@ export default function VideoLightbox({ videos, index, onIndex, onClose }) {
   const closeRef = useRef(null);
   const touchX = useRef(null);
   const video = videos[index];
+  const { project } = video;
   const many = videos.length > 1;
+  // Other formats of the same project that are in the current playlist (respects grid filters).
+  const siblings = project.cuts.filter((c) => videos.some((v) => v.id === c.id));
 
   const go = (delta) => onIndex((index + delta + videos.length) % videos.length);
 
@@ -122,31 +125,60 @@ export default function VideoLightbox({ videos, index, onIndex, onClose }) {
 
           <div className="lightbox__details">
             <p className="lightbox__meta">
-              {video.category} · {video.aspect} · {formatDuration(video.seconds)}
+              {project.category} · {video.label} · {video.aspect} · {formatDuration(video.seconds)}
             </p>
             <h2 id="lightbox-title" className="lightbox__title">
-              {video.title}
+              {project.title}
             </h2>
-            <p className="lightbox__owner">{video.client ? `Client: ${video.client}` : 'Concept piece'}</p>
-            <p className="lightbox__summary">{video.summary}</p>
+            <p className="lightbox__owner">
+              {ownerLabel(project.owner)}
+              {project.owner.note ? ` (${project.owner.note})` : ''}
+            </p>
+            <p className="lightbox__summary">{project.summary}</p>
+            {siblings.length > 1 ? (
+              <div className="lightbox__cuts" role="group" aria-label="Formats of this project">
+                {siblings.map((c) => {
+                  const on = c.id === video.id;
+                  return (
+                    <button
+                      key={c.id}
+                      type="button"
+                      className={`lightbox__cut${on ? ' lightbox__cut--on' : ''}`}
+                      aria-pressed={on}
+                      onClick={() => !on && onIndex(videos.findIndex((v) => v.id === c.id))}
+                    >
+                      {c.label} · {c.aspect}
+                    </button>
+                  );
+                })}
+              </div>
+            ) : null}
             <dl className="lightbox__dl">
-              {video.tools?.length ? (
+              <div>
+                <dt>Format</dt>
+                <dd>
+                  MP4 · {video.width}×{video.height} · {formatDuration(video.seconds)}
+                </dd>
+              </div>
+              {project.languages?.length ? (
+                <div>
+                  <dt>Language</dt>
+                  <dd>{project.languages.join(', ')}</dd>
+                </div>
+              ) : null}
+              {project.tools?.length ? (
                 <div>
                   <dt>Tools</dt>
-                  <dd>{video.tools.join(', ')}</dd>
+                  <dd>{project.tools.join(', ')}</dd>
                 </div>
               ) : null}
-              {video.languages?.length ? (
-                <div>
-                  <dt>Languages</dt>
-                  <dd>{video.languages.join(', ')}</dd>
-                </div>
-              ) : null}
-              <div>
-                <dt>Deliverables</dt>
-                <dd>{deliverables.video.slice(0, 2).join(' · ')}</dd>
-              </div>
             </dl>
+            {project.link ? (
+              <a className="btn-ghost lightbox__link" href={project.link.href} target="_blank" rel="noopener noreferrer">
+                {project.link.label}
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
+            ) : null}
             {many ? (
               <div className="lightbox__nav">
                 <button type="button" className="lightbox__icon" onClick={() => go(-1)} aria-label="Previous video">

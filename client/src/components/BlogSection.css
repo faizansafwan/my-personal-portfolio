@@ -1,0 +1,96 @@
+.blog-section {
+  padding-bottom: var(--section-gap);
+}
+
+.blog-section__intro {
+  color: var(--text-muted);
+  max-width: 52ch;
+  margin: calc(var(--space-unit) * -2) 0 calc(var(--space-unit) * 5);
+}
+
+.blog-section__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space-unit) * 3);
+}
+
+.blog-card__meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: calc(var(--space-unit) * 1);
+  margin-bottom: calc(var(--space-unit) * 1.5);
+}
+
+.blog-card__time {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.blog-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.5vw, 26px);
+  line-height: 1.2;
+  margin: 0 0 calc(var(--space-unit) * 2);
+  max-width: 48ch;
+}
+
+.blog-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--space-unit) * 1);
+  margin-bottom: calc(var(--space-unit) * 2);
+}
+
+.blog-card__tags span {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 3px 8px;
+  color: var(--accent);
+}
+
+.blog-card__excerpt {
+  color: var(--text-muted);
+  margin: 0 0 calc(var(--space-unit) * 2);
+  max-width: 65ch;
+}
+
+.blog-card__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--space-unit) * 1);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 14px;
+  padding: calc(var(--space-unit) * 1.25) calc(var(--space-unit) * 2);
+  cursor: pointer;
+}
+
+.blog-card__toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.blog-card__body {
+  overflow: hidden;
+  margin-top: calc(var(--space-unit) * 3);
+  padding-top: calc(var(--space-unit) * 3);
+  border-top: 1px solid var(--border);
+}
+
+.blog-card__body p {
+  color: var(--text-muted);
+  max-width: 68ch;
+  margin: 0 0 calc(var(--space-unit) * 2);
+  line-height: 1.65;
+}

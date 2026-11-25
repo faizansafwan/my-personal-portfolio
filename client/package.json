@@ -17,7 +17,7 @@
     "preview": "vite preview",
     "icons": "python scripts/generate-icons.py",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist --dotfiles",
+    "deploy": "gh-pages -d dist --dotfiles -u \"faizansafwan <faizansafwan075@gmail.com>\"",
     "test": "echo \"No test runner configured\""
   },
   "devDependencies": {

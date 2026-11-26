@@ -49,7 +49,12 @@ export default function LottieRail({ items, selectedId, onSelect, reduced, panel
 
   return (
     <div className="lottie-rail" ref={railRef}>
-      <div className="lottie-rail__list" role="tablist" aria-label="Lottie animations">
+      <div
+        className="lottie-rail__list"
+        role="tablist"
+        aria-label="Lottie animations"
+        style={{ '--cols': items.length }}
+      >
         {items.map((item) => {
           const selected = item.id === selectedId;
           return (

@@ -72,7 +72,7 @@ export default function PhoneMockup({ item, items, reduced }) {
       </div>
 
       <div className="phone__frame">
-        <div className="phone__screen">
+        <div className={`phone__screen${shown.screen.theme === 'dark' ? ' phone__screen--dark' : ''}`}>
           <div className="phone__status" aria-hidden="true">
             <span>9:41</span>
             <span className="phone__island" />
@@ -80,7 +80,7 @@ export default function PhoneMockup({ item, items, reduced }) {
           </div>
           <div className="phone__appbar" aria-hidden="true">
             <ChevronLeft size={18} />
-            <span>Checkout</span>
+            <span>{shown.screen.bar || 'Checkout'}</span>
           </div>
           <div className="phone__body">
             <div key={shown.id} ref={animRef} className="phone__anim" aria-hidden="true" />

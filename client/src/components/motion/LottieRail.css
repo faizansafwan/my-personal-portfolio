@@ -27,7 +27,8 @@
 @media (min-width: 900px) {
   .lottie-rail__list {
     grid-auto-flow: row;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    /* one row whatever the set size (4, 5 or 6): --cols is set from the item count */
+    grid-template-columns: repeat(var(--cols, 5), minmax(0, 1fr));
     overflow: visible;
     padding-bottom: 4px;
   }

@@ -166,3 +166,34 @@
 .phone__cta--ghost {
   background: transparent;
 }
+
+/* Dark screen for dark-UI products (Tech Pulse): navy app, lime call to action. */
+.phone__screen--dark {
+  background: #0b1020;
+  color: var(--text);
+}
+
+.phone__screen--dark .phone__island {
+  background: #000;
+}
+
+.phone__screen--dark .phone__bars {
+  border-color: var(--text);
+}
+
+.phone__screen--dark .phone__appbar {
+  border-bottom-color: color-mix(in srgb, var(--text) 10%, transparent);
+}
+
+.phone__screen--dark .phone__anim {
+  width: 74%;
+}
+
+.phone__screen--dark .phone__sub {
+  color: color-mix(in srgb, var(--text) 55%, #0b1020);
+}
+
+.phone__screen--dark .phone__cta {
+  background: var(--accent);
+  color: var(--bg);
+}

@@ -14,9 +14,12 @@
  * Lottie collections. The first one is featured: it opens in the inspector and fills the hero
  * reel and the home-page teaser. Item ids must be unique across collections (deep-link hashes).
  *
- * Collection fields: id, title, label, concept, summary, intro, sizeRange, items
+ * Collection fields: id, title, label, isNew (optional), concept, accent (switcher colour),
+ *   strip (preview image, public/motion/collections/<id>.webp), summary, intro, sizeRange, items
  * Item fields: id, title, useCase, detail, file (JSON), dotLottie (optional), sizeKb, fps, seconds,
- *   loop, tags, screen (phone-mockup copy), flowFrom (optional id of the state that precedes it)
+ *   loop, tags, screen (phone-mockup copy; bar = app-bar title; theme 'dark' = dark phone screen),
+ *   flowFrom (optional id of the state
+ *   that precedes it)
  */
 const jellyItems = [
   {
@@ -152,12 +155,103 @@ const classicItems = [
   },
 ];
 
+const techPulseItems = [
+  {
+    id: 'tech-doc-to-data',
+    title: 'Document to data',
+    useCase: 'AI document extraction & OCR',
+    detail:
+      'A document slides in, a scan line sweeps it, and its text lifts off into structured data cards. A tick draws on the last one.',
+    file: 'lottie/tech-pulse/doc_to_data.json',
+    dotLottie: 'lottie/tech-pulse/doc_to_data.lottie',
+    sizeKb: 20.4,
+    fps: 60,
+    seconds: 3,
+    loop: false,
+    tags: ['ai', 'documents', 'extraction'],
+    screen: { theme: 'dark', bar: 'Documents', title: 'Invoice processed', line: '18 line items extracted', sub: 'Ready to review and export', cta: 'Review' },
+    flowFrom: 'tech-ai-thinking',
+  },
+  {
+    id: 'tech-ai-thinking',
+    title: 'AI thinking',
+    useCase: 'AI assistants & generation states',
+    detail: 'A lime core gathers light from five data nodes along marching feed lines, breathing as it spins up. A seamless 2 s loop.',
+    file: 'lottie/tech-pulse/ai_thinking.json',
+    dotLottie: 'lottie/tech-pulse/ai_thinking.lottie',
+    sizeKb: 18.9,
+    fps: 60,
+    seconds: 2,
+    loop: true,
+    tags: ['ai', 'loop'],
+    screen: { theme: 'dark', bar: 'Assistant', title: 'Reading your document', line: 'Finding totals, dates and line items', sub: 'This takes a few seconds', cta: null },
+  },
+  {
+    id: 'tech-cloud-sync',
+    title: 'Cloud sync',
+    useCase: 'Sync, backup & multi-device apps',
+    detail: 'Packets ride curved paths both ways between a laptop and a phone while the sync ring sweeps. A seamless 2 s loop.',
+    file: 'lottie/tech-pulse/cloud_sync.json',
+    dotLottie: 'lottie/tech-pulse/cloud_sync.lottie',
+    sizeKb: 17.4,
+    fps: 60,
+    seconds: 2,
+    loop: true,
+    tags: ['sync', 'loop'],
+    screen: { theme: 'dark', bar: 'Sync', title: 'Syncing your workspace', line: '3 devices up to date', sub: 'Changes appear everywhere in seconds', cta: null },
+  },
+  {
+    id: 'tech-biometric',
+    title: 'Biometric unlock',
+    useCase: 'Sign-in, payments & secure actions',
+    detail: 'Fingerprint ridges draw on, a scan turns them lime, then the shield pops in and its lock opens with a mechanical click.',
+    file: 'lottie/tech-pulse/biometric.json',
+    dotLottie: 'lottie/tech-pulse/biometric.lottie',
+    sizeKb: 16.8,
+    fps: 60,
+    seconds: 2.5,
+    loop: false,
+    tags: ['security', 'auth'],
+    screen: { theme: 'dark', bar: 'Security', title: 'Unlocked', line: 'Signed in with Touch ID', sub: 'Your vault is open', cta: 'Continue' },
+  },
+  {
+    id: 'tech-deploy',
+    title: 'Deploy pipeline',
+    useCase: 'CI/CD, dev tools & release status',
+    detail: 'Build, Test, Review and Live light up in sequence along a lime rail, then a rocket launches on a cyan exhaust.',
+    file: 'lottie/tech-pulse/deploy.json',
+    dotLottie: 'lottie/tech-pulse/deploy.lottie',
+    sizeKb: 22.1,
+    fps: 60,
+    seconds: 3,
+    loop: false,
+    tags: ['devtools', 'ci-cd'],
+    screen: { theme: 'dark', bar: 'Pipeline', title: 'Deployed to production', line: 'Build #1042 · 38 s', sub: 'All 4 stages passed', cta: 'View logs' },
+  },
+  {
+    id: 'tech-reconnecting',
+    title: 'Reconnecting',
+    useCase: 'Offline & connection-status states',
+    detail: 'The signal breaks in coral, searching arcs ripple out, then the bars refill and the status turns lime. A seamless 2.5 s loop.',
+    file: 'lottie/tech-pulse/reconnecting.json',
+    dotLottie: 'lottie/tech-pulse/reconnecting.lottie',
+    sizeKb: 14.6,
+    fps: 60,
+    seconds: 2.5,
+    loop: true,
+    tags: ['network', 'loop'],
+    screen: { theme: 'dark', bar: 'Status', title: 'Reconnecting…', line: 'Your work is saved offline', sub: 'We’ll sync it when you’re back', cta: null },
+  },
+];
+
 export const lottieCollections = [
   {
     id: 'jelly',
     title: 'Jelly set',
     label: 'Featured · v2',
     concept: 'Self-initiated concept',
+    accent: '#a78bfa',
+    strip: 'motion/collections/jelly.webp',
     summary: 'One glossy jelly material, no character: shape and motion tell each state.',
     intro:
       'Four app states told by one clay-and-jelly material, with gradients, gloss, a soft depth layer and a holographic ' +
@@ -167,10 +261,28 @@ export const lottieCollections = [
     items: jellyItems,
   },
   {
+    id: 'tech-pulse',
+    title: 'Tech Pulse',
+    label: 'New · v3',
+    isNew: true,
+    concept: 'Self-initiated concept',
+    accent: '#38bdf8',
+    strip: 'motion/collections/tech-pulse.webp',
+    summary: 'Six tech moments for SaaS, AI and developer products, in frosted glass and precise light.',
+    intro:
+      'Six moments that SaaS, AI and developer products really have: AI thinking, document to data, cloud sync, ' +
+      'biometric unlock, deploy pipeline and reconnecting. Frosted-glass panels, thin precise lines and small glowing ' +
+      'accents, with crisp, engineered motion. Pick one to inspect it frame by frame.',
+    sizeRange: '15–22 KB',
+    items: techPulseItems,
+  },
+  {
     id: 'classic',
     title: 'Classic badge set (v1)',
     label: 'v1',
     concept: 'Self-initiated concept',
+    accent: '#22c55e',
+    strip: 'motion/collections/classic.webp',
     summary: 'The first set: five matching badges with draw-on icons.',
     intro:
       'Five matching animations for the moments every app has: success, loading, error, empty cart and upload done. ' +

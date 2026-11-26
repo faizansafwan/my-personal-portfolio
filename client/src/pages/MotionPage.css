@@ -381,58 +381,166 @@
   color: var(--accent);
 }
 
-/* Collection switcher (Jelly set / Classic badge set) */
+/*
+ * Collection switcher: one preview card per Lottie set. Each card shows a strip of the set's real
+ * animations (rendered from its JSON) on a soft glow in the set's own accent (--set-accent).
+ * Desktop: a 3-up row. Phones: a swipeable row that snaps card by card.
+ */
 .collection-switch {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-  gap: calc(var(--space-unit) * 1.5);
-  max-width: 640px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: calc(var(--space-unit) * 2);
   margin: calc(var(--space-unit) * -1) 0 calc(var(--space-unit) * 3);
 }
 
+@media (max-width: 899px) {
+  .collection-switch {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(260px, 82%);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 4px calc(var(--space-unit) * 1.5);
+    margin-inline: -4px;
+    scrollbar-width: thin;
+  }
+
+  .collection-switch__btn {
+    scroll-snap-align: start;
+  }
+}
+
 .collection-switch__btn {
+  --set-accent: var(--accent);
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 4px;
   min-width: 0;
-  padding: 12px 16px;
+  padding: 0;
+  overflow: hidden;
   text-align: left;
+  font: inherit;
   color: var(--text-muted);
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: calc(var(--radius) + 4px);
   cursor: pointer;
-  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  transition:
+    border-color var(--duration-base, 0.2s) ease,
+    box-shadow var(--duration-base, 0.2s) ease,
+    transform var(--duration-base, 0.2s) ease;
 }
 
-.collection-switch__btn:hover {
-  border-color: var(--text-muted);
+.collection-switch__strip {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 1;
+  padding: 10px 12px 4px;
+  background:
+    radial-gradient(ellipse 70% 90% at 50% 70%, color-mix(in srgb, var(--set-accent) 16%, transparent), transparent 70%),
+    color-mix(in srgb, var(--bg) 70%, var(--surface));
+  border-bottom: 1px solid var(--border);
 }
 
-.collection-switch__btn--on {
-  color: var(--text);
-  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
-  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+.collection-switch__strip img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.62;
+  filter: saturate(0.7);
+  transition: opacity var(--duration-base, 0.2s) ease, filter var(--duration-base, 0.2s) ease;
+}
+
+.collection-switch__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 16px 14px;
 }
 
 .collection-switch__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
   font-weight: 600;
-  font-size: 15px;
+  font-size: 17px;
+  color: var(--text);
+}
+
+.collection-switch__new {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--accent);
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+.collection-switch__summary {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-muted);
 }
 
 .collection-switch__meta {
+  margin-top: 2px;
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.04em;
   color: var(--text-muted);
 }
 
+@media (hover: hover) {
+  .collection-switch__btn:hover {
+    border-color: color-mix(in srgb, var(--set-accent) 40%, var(--border));
+    transform: translateY(-2px);
+  }
+
+  .collection-switch__btn:hover .collection-switch__strip img {
+    opacity: 0.9;
+    filter: none;
+  }
+}
+
+/* Active set: lit in its own colour, strip at full strength, accent bar along the top. */
+.collection-switch__btn--on {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--set-accent) 65%, var(--border));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--set-accent) 30%, transparent),
+    0 14px 40px color-mix(in srgb, var(--set-accent) 14%, transparent);
+}
+
+.collection-switch__btn--on::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--set-accent);
+  z-index: 1;
+}
+
+.collection-switch__btn--on .collection-switch__strip img {
+  opacity: 1;
+  filter: none;
+}
+
 .collection-switch__btn--on .collection-switch__meta {
-  color: var(--accent);
+  color: var(--set-accent);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .collection-switch__btn {
+  .collection-switch__btn,
+  .collection-switch__strip img {
     transition: none;
+  }
+
+  .collection-switch__btn:hover {
+    transform: none;
   }
 }

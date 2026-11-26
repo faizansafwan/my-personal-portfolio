@@ -283,12 +283,23 @@ export default function MotionPage() {
                       key={c.id}
                       type="button"
                       className={`collection-switch__btn${on ? ' collection-switch__btn--on' : ''}`}
+                      style={{ '--set-accent': c.accent }}
                       aria-pressed={on}
                       onClick={() => !on && select(c.items[0].id)}
                     >
-                      <span className="collection-switch__title">{c.title}</span>
-                      <span className="collection-switch__meta">
-                        {c.label} · {c.items.length} animations · {c.sizeRange}
+                      <span className="collection-switch__strip" aria-hidden="true">
+                        <img src={`${BASE}${c.strip}`} alt="" width="960" height="240" loading="lazy" decoding="async" />
+                      </span>
+                      <span className="collection-switch__text">
+                        <span className="collection-switch__title">
+                          {c.title}
+                          {c.isNew ? <span className="collection-switch__new">New</span> : null}
+                        </span>
+                        <span className="collection-switch__summary">{c.summary}</span>
+                        <span className="collection-switch__meta">
+                          {c.items.length} animations · {c.sizeRange}
+                          {c.isNew ? '' : ` · ${c.label}`}
+                        </span>
                       </span>
                     </button>
                   );

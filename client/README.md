@@ -102,4 +102,6 @@ count and the page's `VideoObject` JSON-LD all update from that data. Run `npm r
 
 Drop the JSON (and optional `.lottie`) into `public/lottie/<set>/`, then add an entry to that set's item list in
 `src/data/motion.js` (title, use case, one-line detail, phone-screen copy). Sets live in `lottieCollections`; the
-first one is featured (inspector default, hero reel, home teaser). Frames, fps, canvas, layers and file size are read from the JSON itself.
+first one is featured (inspector default, hero reel). Each set has a preview strip for the switcher at
+`public/motion/collections/<id>.webp`, rendered from the real JSON by `tools/collection_strips.mjs` in the Lottie
+builder folder. Frames, fps, canvas, layers and file size are read from the JSON itself.

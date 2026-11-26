@@ -112,7 +112,7 @@ export default function LottieStage({ item, reduced, panelId }) {
         <div key={item.id} ref={animRef} className="lottie-stage__anim" aria-hidden="true" />
         {error ? <p className="lottie-stage__error">This animation could not load. Refresh to try again.</p> : null}
         <div className="lottie-stage__hud" aria-hidden="true">
-          <span>{item.id}.json</span>
+          <span>{item.file.split('/').pop()}</span>
           <span>{meta ? `${meta.width}×${meta.height} · ${meta.fps} fps` : '—'}</span>
         </div>
       </div>
